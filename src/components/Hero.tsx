@@ -50,7 +50,7 @@ export function Hero() {
         <div className="relative order-first flex items-center justify-center lg:order-last">
           <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2.5rem] bg-brand-navy-light shadow-2xl shadow-black/30">
             <img
-              src="/images/hero.svg"
+              src="/images/hero.png"
               alt="YuTu Servicekraft"
               className="h-full w-full object-cover"
             />

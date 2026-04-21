@@ -1,9 +1,22 @@
 import sharp from 'sharp';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
+
+const LOGO_PATH = resolve(root, 'public/ytlogo.png');
+const OUT_PATH = resolve(root, 'public/images/og.jpg');
+
+const LOGO_TARGET_HEIGHT = 96;
+const logoMeta = await sharp(LOGO_PATH).metadata();
+const logoWidth = Math.round((logoMeta.width / logoMeta.height) * LOGO_TARGET_HEIGHT);
+
+const logoBuffer = await sharp(LOGO_PATH)
+  .resize({ height: LOGO_TARGET_HEIGHT })
+  .png()
+  .toBuffer();
 
 const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
@@ -30,17 +43,9 @@ const svg = `
   <circle cx="1020" cy="150" r="78" fill="#f57a2c"/>
   <circle cx="1020" cy="150" r="38" fill="#132761"/>
 
-  <!-- Brand mark (same SVG as site header) -->
-  <g transform="translate(80, 84) scale(1.25)">
-    <g fill="#ffffff">
-      <path d="M14 18c0-4 3-7 7-7s7 3 7 7v10h-7c-4 0-7-3-7-7v-3z" opacity="0.95"/>
-      <path d="M36 36c0 4 3 7 7 7s7-3 7-7V26h-7c-4 0-7 3-7 7v3z" opacity="0.95"/>
-      <path d="M22 36h10v10H22z" opacity="0.85"/>
-      <path d="M32 18h10v10H32z" opacity="0.85"/>
-    </g>
-  </g>
-  <text x="180" y="124" font-family="Arial Black, Helvetica, sans-serif" font-size="36" fill="#ffffff" font-weight="900">YuTu</text>
-  <text x="182" y="154" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" opacity="0.8" letter-spacing="1">Staff Solutions</text>
+  <!-- Brand text (logo is composited separately) -->
+  <text x="${80 + logoWidth + 24}" y="128" font-family="Arial Black, Helvetica, sans-serif" font-size="36" fill="#ffffff" font-weight="900">YuTu</text>
+  <text x="${80 + logoWidth + 26}" y="158" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" opacity="0.8" letter-spacing="1">Staff Solutions</text>
 
   <!-- Kicker -->
   <rect x="80" y="220" width="56" height="6" fill="#f57a2c"/>
@@ -56,20 +61,20 @@ const svg = `
   <!-- Benefit chips (uniform size) -->
   <g transform="translate(80, 490)">
     <rect x="0" y="0" width="180" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
-    <circle cx="90" cy="22" r="5" fill="#f57a2c" transform="translate(-52,0)"/>
-    <text x="90" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600" transform="translate(8,0)">Gastronomie</text>
+    <circle cx="38" cy="22" r="5" fill="#f57a2c"/>
+    <text x="98" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600">Gastronomie</text>
 
     <rect x="200" y="0" width="180" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
-    <circle cx="290" cy="22" r="5" fill="#f57a2c" transform="translate(-44,0)"/>
-    <text x="290" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600" transform="translate(8,0)">Reinigung</text>
+    <circle cx="246" cy="22" r="5" fill="#f57a2c"/>
+    <text x="298" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600">Reinigung</text>
 
     <rect x="400" y="0" width="180" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
-    <circle cx="490" cy="22" r="5" fill="#f57a2c" transform="translate(-30,0)"/>
-    <text x="490" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600" transform="translate(8,0)">Event</text>
+    <circle cx="460" cy="22" r="5" fill="#f57a2c"/>
+    <text x="498" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600">Event</text>
 
     <rect x="600" y="0" width="180" height="44" rx="22" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.2"/>
-    <circle cx="690" cy="22" r="5" fill="#f57a2c" transform="translate(-40,0)"/>
-    <text x="690" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600" transform="translate(8,0)">Security</text>
+    <circle cx="650" cy="22" r="5" fill="#f57a2c"/>
+    <text x="698" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#ffffff" font-weight="600">Security</text>
   </g>
 
   <!-- CTA Button -->
@@ -81,7 +86,14 @@ const svg = `
 `;
 
 await sharp(Buffer.from(svg))
+  .composite([
+    {
+      input: logoBuffer,
+      left: 80,
+      top: 88,
+    },
+  ])
   .jpeg({ quality: 90, mozjpeg: true })
-  .toFile(resolve(root, 'public/images/og.jpg'));
+  .toFile(OUT_PATH);
 
-console.log('✓ og.jpg generated (1200x630)');
+console.log(`✓ og.jpg generated (1200x630) with logo (${logoWidth}x${LOGO_TARGET_HEIGHT})`);

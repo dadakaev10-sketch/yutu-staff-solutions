@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'Welche Unterlagen brauche ich, wenn es losgeht?',
-    a: 'Für den ersten Einsatz brauchst du Ausweis, Sozialversicherungsnummer und eine Bankverbindung. Alles andere klären wir persönlich mit dir.',
+    a: 'Für den ersten Einsatz brauchst du: Reisepass oder Führerschein (bzw. Aufenthaltstitel), e-card und Meldezettel. Ohne österreichische Staatsbürgerschaft zusätzlich einen Nachweis über den freien Zugang zum Arbeitsmarkt. Alles Weitere klären wir persönlich mit dir.',
   },
 ];
 

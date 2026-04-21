@@ -1,6 +1,5 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from './ui/Button';
-import { JobSearch } from './JobSearch';
 
 const bullets = ['Schnell & flexibel', 'Ohne Lebenslauf', 'Regionale Jobs'];
 
@@ -66,10 +65,6 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-5 pb-14 sm:px-8 sm:pb-20">
-        <JobSearch />
       </div>
     </section>
   );

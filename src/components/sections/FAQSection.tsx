@@ -42,7 +42,7 @@ export function FAQSection() {
             FAQ
           </span>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            Haeufige Fragen
+            Häufige Fragen
           </h2>
           <p className="mt-4 text-lg leading-8 text-slate-600">
             Alles Wichtige rund um Bewerbung, Ablauf und Einsatz auf einen Blick.

@@ -5,7 +5,6 @@ import { Button } from '../ui/Button';
 const navItems = [
   { label: 'Branchen', href: '#branchen' },
   { label: 'Vorteile', href: '#vorteile' },
-  { label: 'Stimmen', href: '#stimmen' },
   { label: 'Einsatzbereiche', href: '#einsatzbereiche' },
   { label: 'Für Betriebe', href: '#partner' },
   { label: 'FAQ', href: '#faq' },

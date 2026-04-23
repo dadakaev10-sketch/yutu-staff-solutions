@@ -127,13 +127,18 @@ export function ApplicationSection() {
               </div>
 
               <div>
-                <label htmlFor="branche" className="mb-2 block text-sm font-semibold text-slate-700">Gewünschte Branche</label>
-                <select id="branche" name="branche[]" multiple required className="min-h-[144px] w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100">
+                <p className="mb-2 block text-sm font-semibold text-slate-700">Gewünschte Branche</p>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {branchOptions.map((option) => (
-                    <option key={option} value={option}>{option}</option>
+                    <label
+                      key={option}
+                      className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-navy hover:bg-blue-50 has-[:checked]:border-brand-navy has-[:checked]:bg-blue-50 has-[:checked]:text-brand-navy"
+                    >
+                      <input type="checkbox" name="branche" value={option} className="accent-brand-navy" />
+                      {option}
+                    </label>
                   ))}
-                </select>
-                <p className="mt-2 text-sm text-slate-500">Mehrfachauswahl mit `Cmd` oder `Ctrl` möglich.</p>
+                </div>
               </div>
 
               <div>

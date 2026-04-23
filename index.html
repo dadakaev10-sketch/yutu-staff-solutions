@@ -2,7 +2,8 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/ytlogo.png" />
+    <link rel="apple-touch-icon" href="/ytlogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#132761" />
     <meta name="description" content="Schnell & flexibel bewerben – ohne Lebenslauf. Regionale Nebenjobs in Gastronomie, Reinigung, Event & Security. Faire Bezahlung, freie Zeiteinteilung." />
@@ -31,17 +32,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Netlify Form Discovery (hidden): Netlify parst diesen HTML-Block zum Build-Zeitpunkt -->
-    <form name="bewerbung" data-netlify="true" data-netlify-honeypot="bot-field" netlify hidden>
-      <input type="text" name="vorname" />
-      <input type="text" name="nachname" />
-      <input type="text" name="adresse" />
-      <input type="tel" name="telefon" />
-      <input type="email" name="email" />
-      <input type="text" name="branche" />
-      <input type="file" name="dateien" />
-      <input type="text" name="bot-field" />
-    </form>
   </body>
 </html>

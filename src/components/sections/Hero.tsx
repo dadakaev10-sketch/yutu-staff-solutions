@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { ArrowRight, Clock3, MapPin, ShieldCheck, Users } from 'lucide-react';
+import { gsap } from 'gsap';
 import { Button } from '../ui/Button';
 
 const trustItems = [
@@ -9,6 +11,33 @@ const trustItems = [
 ];
 
 export function Hero() {
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const trustRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+      tl.fromTo(badgeRef.current, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+        .fromTo(headingRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
+        .fromTo(subRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
+        .fromTo(buttonsRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.3')
+        .fromTo(
+          trustRef.current.filter(Boolean),
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 },
+          '-=0.2'
+        )
+        .fromTo(cardRef.current, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 }, '-=0.6');
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="top" className="relative isolate overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-heading">
       <div
@@ -28,11 +57,12 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[88svh] max-w-7xl items-center px-4 pb-12 pt-28 sm:px-6 lg:px-8">
         <div className="grid w-full gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur">
+            <div ref={badgeRef} className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur">
               Persönlich, regional, menschlich
             </div>
 
             <h1
+              ref={headingRef}
               id="hero-heading"
               className="mt-6 max-w-4xl text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
             >
@@ -41,11 +71,11 @@ export function Hero() {
               Regional. Flexibel.
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">
+            <p ref={subRef} className="mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">
               Schnell bewerben • Persönliche Rückmeldung • Jobs direkt in deiner Region
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div ref={buttonsRef} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="rounded-full">
                 <a href="#bewerbung">
                   Jetzt bewerben - in 2 Minuten
@@ -64,13 +94,14 @@ export function Hero() {
             </div>
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {trustItems.map(({ icon: Icon, value, label }) => (
+              {trustItems.map(({ icon: Icon, value, label }, i) => (
                 <div
                   key={label}
+                  ref={(el) => { trustRef.current[i] = el; }}
                   className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/20 text-brand-green">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#10B981]/20 text-[#10B981]">
                       <Icon className="h-5 w-5" />
                     </span>
                     <div>
@@ -83,9 +114,9 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hidden lg:block">
+          <div ref={cardRef} className="hidden lg:block">
             <div className="ml-auto max-w-md rounded-[2rem] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-green">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#10B981]">
                 Schnell zum Einsatz
               </p>
               <h2 className="mt-4 text-2xl font-bold text-white">

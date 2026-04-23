@@ -33,10 +33,12 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#top" className="flex items-center gap-3" aria-label="YuTu Staff Solutions Startseite">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-navy text-lg font-extrabold text-white shadow-lg shadow-blue-900/20">
-            Y
-          </div>
+        <a href="#top" className="flex items-center gap-2" aria-label="YuTu Staff Solutions Startseite">
+          <img
+            src="/ytlogo.png"
+            alt="YuTu Logo"
+            className="h-10 w-auto"
+          />
           <div className="leading-tight">
             <div className="text-lg font-extrabold tracking-tight text-slate-950">YuTu</div>
             <div className="text-xs font-medium text-slate-500">Staff Solutions</div>

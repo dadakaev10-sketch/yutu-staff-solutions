@@ -1,27 +1,31 @@
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { Stats } from './components/Stats';
-import { Einsatzbereiche } from './components/Einsatzbereiche';
-import { Benefits } from './components/Benefits';
-import { Testimonials } from './components/Testimonials';
-import { FinalCTA } from './components/FinalCTA';
-import { ApplicationForm } from './components/ApplicationForm';
-import { FAQ } from './components/FAQ';
-import { Footer } from './components/Footer';
+import { Footer } from './components/layout/Footer';
+import { Navbar } from './components/layout/Navbar';
+import { ApplicationSection } from './components/sections/ApplicationSection';
+import { Einsatzbereiche } from './components/sections/Einsatzbereiche';
+import { FAQSection } from './components/sections/FAQSection';
+import { Hero } from './components/sections/Hero';
+import { PartnerSection } from './components/sections/PartnerSection';
+import { Testimonials } from './components/sections/Testimonials';
+import { Vorteile } from './components/sections/Vorteile';
+import { WhyYutu } from './components/sections/WhyYutu';
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-brand-navy">
-      <Header />
-      <Hero />
-      <Stats />
-      <Einsatzbereiche />
-      <Benefits />
-      <Testimonials />
-      <FinalCTA />
-      <ApplicationForm />
-      <FAQ />
+    <div className="min-h-screen bg-white text-slate-900">
+      <Navbar />
+
+      <main>
+        <Hero />
+        <WhyYutu />
+        <Einsatzbereiche />
+        <Vorteile />
+        <Testimonials />
+        <ApplicationSection />
+        <PartnerSection />
+        <FAQSection />
+      </main>
+
       <Footer />
-    </main>
+    </div>
   );
 }

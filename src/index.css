@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
@@ -12,17 +12,25 @@
   }
 
   body {
-    @apply bg-brand-navy text-white font-sans antialiased;
+    @apply bg-white text-slate-900 font-sans antialiased;
   }
 
-  /* Autofill fix: dunkles Autofill auf dunklem Hintergrund */
+  * {
+    @apply border-slate-200;
+  }
+
+  ::selection {
+    @apply bg-brand-orange text-white;
+  }
+
+  /* Autofill fix */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   textarea:-webkit-autofill,
   select:-webkit-autofill {
-    -webkit-text-fill-color: #ffffff;
-    -webkit-box-shadow: 0 0 0px 1000px #1a3278 inset;
+    -webkit-text-fill-color: #0f172a;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
 }

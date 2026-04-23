@@ -81,21 +81,15 @@ export function ApplicationSection() {
 
           <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/70 sm:p-8">
             <form
-              name="bewerbung"
+              action="https://api.web3forms.com/submit"
               method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
               encType="multipart/form-data"
               className="space-y-6"
             >
-              <input type="hidden" name="form-name" value="bewerbung" />
-
-              <p className="hidden">
-                <label>
-                  Nicht ausfüllen:
-                  <input name="bot-field" />
-                </label>
-              </p>
+              <input type="hidden" name="access_key" value="d8839665-14bd-48f6-ab28-effc6add4b2d" />
+              <input type="hidden" name="subject" value="Neue Bewerbung - YuTu Staff Solutions" />
+              <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+              <input type="checkbox" name="botcheck" className="hidden" />
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>

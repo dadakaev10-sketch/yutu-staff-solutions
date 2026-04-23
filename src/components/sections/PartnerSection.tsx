@@ -83,34 +83,43 @@ export function PartnerSection() {
               </p>
             </div>
 
-            <form className="grid gap-5 sm:grid-cols-2">
+            <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              className="grid gap-5 sm:grid-cols-2"
+            >
+              <input type="hidden" name="access_key" value="d8839665-14bd-48f6-ab28-effc6add4b2d" />
+              <input type="hidden" name="subject" value="Neue Personalanfrage - YuTu Staff Solutions" />
+              <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+              <input type="checkbox" name="botcheck" className="hidden" />
+
               <div>
                 <label htmlFor="betrieb-name" className="mb-2 block text-sm font-semibold text-slate-700">Betrieb / Unternehmen</label>
-                <input id="betrieb-name" type="text" className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="Name des Betriebs" />
+                <input id="betrieb-name" name="betrieb" type="text" required className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="Name des Betriebs" />
               </div>
 
               <div>
                 <label htmlFor="betrieb-kontakt" className="mb-2 block text-sm font-semibold text-slate-700">Ansprechpartner:in</label>
-                <input id="betrieb-kontakt" type="text" className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="Vor- und Nachname" />
+                <input id="betrieb-kontakt" name="ansprechpartner" type="text" required className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="Vor- und Nachname" />
               </div>
 
               <div>
                 <label htmlFor="betrieb-email" className="mb-2 block text-sm font-semibold text-slate-700">E-Mail</label>
-                <input id="betrieb-email" type="email" className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="kontakt@betrieb.at" />
+                <input id="betrieb-email" name="email" type="email" required className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="kontakt@betrieb.at" />
               </div>
 
               <div>
                 <label htmlFor="betrieb-telefon" className="mb-2 block text-sm font-semibold text-slate-700">Telefonnummer</label>
-                <input id="betrieb-telefon" type="tel" className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="+43 ..." />
+                <input id="betrieb-telefon" name="telefon" type="tel" className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="+43 ..." />
               </div>
 
               <div className="sm:col-span-2">
                 <label htmlFor="betrieb-bedarf" className="mb-2 block text-sm font-semibold text-slate-700">Was wird benötigt?</label>
-                <textarea id="betrieb-bedarf" rows={5} className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="z. B. 4 Servicekräfte für Event, kurzfristig ab nächster Woche in Wien" />
+                <textarea id="betrieb-bedarf" name="bedarf" rows={5} className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="z. B. 4 Servicekräfte für Event, kurzfristig ab nächster Woche in Wien" />
               </div>
 
               <div className="sm:col-span-2">
-                <Button type="button" className="h-13 rounded-full bg-brand-navy px-6 text-sm font-semibold text-white hover:bg-brand-navy-dark">
+                <Button type="submit" className="h-13 rounded-full bg-brand-navy px-6 text-sm font-semibold text-white hover:bg-brand-navy-dark">
                   Anfrage senden
                 </Button>
               </div>

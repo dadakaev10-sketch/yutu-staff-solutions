@@ -13,7 +13,7 @@ export function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-heading">
       <div
         className="absolute inset-0 bg-cover bg-top"
-        style={{ backgroundImage: "url('/images/hero-main.jpg')" }}
+        style={{ backgroundImage: "url('/images/desktophero.png')" }}
         aria-hidden="true"
       />
       <div

@@ -6,8 +6,8 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr_0.9fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-navy text-lg font-extrabold text-white">
-              Y
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-navy">
+              <img src="/ytlogo.png" alt="YuTu Logo" className="h-8 w-8" />
             </div>
             <div>
               <div className="text-lg font-extrabold tracking-tight">YuTu</div>
@@ -28,7 +28,6 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-white/70">
             <li><a href="#branchen" className="transition hover:text-white">Branchen</a></li>
             <li><a href="#vorteile" className="transition hover:text-white">Vorteile</a></li>
-            <li><a href="#stimmen" className="transition hover:text-white">Stimmen</a></li>
             <li><a href="#einsatzbereiche" className="transition hover:text-white">Einsatzbereiche</a></li>
             <li><a href="#partner" className="transition hover:text-white">Für Betriebe</a></li>
             <li><a href="#faq" className="transition hover:text-white">FAQ</a></li>

@@ -14,7 +14,7 @@ export default {
       },
       fontFamily: {
         display: ['"Archivo Black"', '"Arial Black"', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Manrope"', 'Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         pill: '9999px',

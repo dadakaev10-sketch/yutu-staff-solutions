@@ -10,7 +10,7 @@ type FieldWrapperProps = {
 export function FieldWrapper({ label, error, id, children }: FieldWrapperProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="text-sm font-semibold uppercase tracking-wide text-white/80">
+      <label htmlFor={id} className="text-sm font-semibold tracking-[0.01em] text-white/84">
         {label}
       </label>
       {children}

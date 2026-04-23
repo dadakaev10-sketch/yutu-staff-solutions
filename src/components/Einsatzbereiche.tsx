@@ -25,44 +25,67 @@ export function Einsatzbereiche() {
   return (
     <section id="branchen" className="bg-brand-navy scroll-mt-20">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
-            <p className="font-display text-sm uppercase tracking-widest text-brand-orange">
-              Deine Einsatzbereiche
-            </p>
-            <h2 className="heading-display mt-3 text-3xl sm:text-4xl lg:text-5xl">
-              Für jeden
-              <br />
-              den richtigen Job.
-            </h2>
-          </div>
-          <p className="max-w-md text-white/80">
-            Wähle deine Wunsch-Branche — wir matchen dich mit passenden Betrieben in deiner Region.
-          </p>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-brand-navy-light/45 p-6 sm:p-8">
+            <div className="pointer-events-none absolute -right-10 top-0 h-40 w-40 rounded-full bg-brand-orange/20 blur-3xl" />
+            <div className="relative">
+              <p className="eyebrow">Deine Einsatzbereiche</p>
+              <h2 className="section-title mt-4 max-w-md">
+                Jobs, die zu deinem Alltag passen.
+              </h2>
+              <p className="section-copy mt-5 max-w-lg">
+                Ob Studium, Familie oder Hauptjob: Wir vermitteln Einsätze, die regional erreichbar sind und sich flexibel einplanen lassen.
+              </p>
+            </div>
 
-        <ul className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-          {bereiche.map(({ icon: Icon, label, desc }) => (
-            <li key={label}>
+            <div className="relative mt-8 overflow-hidden rounded-[1.75rem]">
+              <img
+                src="/images/hero.png"
+                alt="YuTu Team im Einsatz"
+                className="h-[320px] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/15 bg-brand-navy-dark/75 px-4 py-4 backdrop-blur">
+                <div className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-orange">
+                  Im Einsatz
+                </div>
+                <div className="mt-2 text-lg font-bold text-white">
+                  Wir matchen nicht einfach Stellen, sondern Einsatzzeiten, Wege und Teamfit.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            {bereiche.map(({ icon: Icon, label, desc }, index) => (
               <button
+                key={label}
                 type="button"
                 onClick={() => document.getElementById('bewerbung')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group flex h-full w-full flex-col items-start gap-4 rounded-3xl border border-white/10 bg-brand-navy-light/40 p-5 text-left transition hover:border-brand-orange hover:bg-brand-navy-light/70 sm:p-6"
+                className={`group flex h-full w-full flex-col items-start gap-4 rounded-[1.75rem] border p-5 text-left transition sm:p-6 ${
+                  index === 0
+                    ? 'border-brand-orange/45 bg-brand-orange/10 sm:col-span-2'
+                    : 'border-white/10 bg-brand-navy-light/35 hover:border-brand-orange/50 hover:bg-brand-navy-light/60'
+                }`}
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/15 text-brand-orange transition group-hover:bg-brand-orange group-hover:text-white">
+                <span className={`flex h-12 w-12 items-center justify-center rounded-2xl transition ${
+                  index === 0
+                    ? 'bg-brand-orange text-white'
+                    : 'bg-brand-orange/15 text-brand-orange group-hover:bg-brand-orange group-hover:text-white'
+                }`}>
                   <Icon className="h-6 w-6" strokeWidth={2.25} />
                 </span>
                 <div className="flex-1">
-                  <div className="font-display text-lg uppercase tracking-wide sm:text-xl">{label}</div>
-                  <div className="mt-1 text-sm text-white/70">{desc}</div>
+                  <div className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">{label}</div>
+                  <div className="mt-1 text-sm leading-6 text-white/72 sm:text-base">{desc}</div>
                 </div>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold text-white/60 transition group-hover:text-brand-orange">
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-white/68 transition group-hover:text-brand-orange">
                   Jobs ansehen <ArrowRight className="h-4 w-4" />
                 </span>
               </button>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

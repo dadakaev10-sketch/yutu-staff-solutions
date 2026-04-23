@@ -14,13 +14,9 @@ export function Benefits() {
     <section id="vorteile" className="bg-brand-navy-dark scroll-mt-20">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
         <div className="max-w-3xl">
-          <p className="font-display text-sm uppercase tracking-widest text-brand-orange">
-            Deine Vorteile
-          </p>
-          <h2 className="heading-display mt-3 text-3xl sm:text-4xl lg:text-5xl">
-            Flexibler Nebenjob —
-            <br />
-            fair bezahlt.
+          <p className="eyebrow">Deine Vorteile</p>
+          <h2 className="section-title mt-3">
+            Flexibel arbeiten, fair bezahlt werden.
           </h2>
         </div>
 
@@ -34,7 +30,7 @@ export function Benefits() {
                 <Icon className="h-6 w-6" strokeWidth={2.25} />
               </span>
               <div>
-                <div className="font-display text-lg uppercase tracking-wide sm:text-xl">{label}</div>
+                <div className="text-lg font-extrabold tracking-tight text-white sm:text-xl">{label}</div>
                 <p className="mt-2 text-white/75">{desc}</p>
               </div>
             </li>

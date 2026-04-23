@@ -35,8 +35,8 @@ export function FAQ() {
     <section id="faq" className="bg-brand-navy-dark scroll-mt-20">
       <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="text-center">
-          <p className="font-display text-sm uppercase tracking-widest text-brand-orange">Häufige Fragen</p>
-          <h2 className="heading-display mt-3 text-3xl sm:text-4xl lg:text-5xl">FAQ</h2>
+          <p className="eyebrow">Häufige Fragen</p>
+          <h2 className="section-title mt-3">FAQ</h2>
         </div>
 
         <ul className="mt-10 flex flex-col gap-3">
@@ -53,7 +53,7 @@ export function FAQ() {
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition hover:bg-white/5 sm:px-6"
                 >
-                  <span className="font-display text-base uppercase tracking-wide sm:text-lg">{f.q}</span>
+                  <span className="text-base font-bold tracking-tight text-white sm:text-lg">{f.q}</span>
                   <ChevronDown
                     className={`h-5 w-5 shrink-0 text-brand-orange transition-transform ${
                       isOpen ? 'rotate-180' : ''

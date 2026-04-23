@@ -23,13 +23,11 @@ export function Testimonials() {
     <section id="stimmen" className="bg-brand-navy scroll-mt-20">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="max-w-3xl">
-          <p className="font-display text-sm uppercase tracking-widest text-brand-orange">Stimmen aus dem Team</p>
-          <h2 className="heading-display mt-3 text-3xl sm:text-4xl lg:text-5xl">
-            Echte Menschen.
-            <br />
-            Echte Jobs.
+          <p className="eyebrow">Stimmen aus dem Team</p>
+          <h2 className="section-title mt-3">
+            Echte Menschen. Echte Jobs.
           </h2>
-          <p className="mt-4 text-white/80 sm:text-lg">
+          <p className="section-copy mt-4">
             Das sagen unsere Mitarbeiter:innen über ihre Arbeit mit YuTu.
           </p>
         </div>
@@ -44,7 +42,7 @@ export function Testimonials() {
               <p className="text-base leading-relaxed text-white/90">{v.text}</p>
               <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
                 <div>
-                  <div className="font-display uppercase tracking-wide">{v.name}</div>
+                  <div className="text-base font-extrabold tracking-tight text-white">{v.name}</div>
                   <div className="text-xs text-white/60">{v.role}</div>
                 </div>
                 <div className="flex gap-0.5">

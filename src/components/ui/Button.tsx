@@ -8,7 +8,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-pill font-display uppercase tracking-wide text-lg sm:text-xl px-8 py-5 transition-transform duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 disabled:opacity-60 disabled:cursor-not-allowed';
+  'inline-flex items-center justify-center gap-2 rounded-pill font-sans font-extrabold tracking-[0.01em] text-base sm:text-lg px-8 py-5 transition-transform duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 disabled:opacity-60 disabled:cursor-not-allowed';
 
 const variants: Record<Variant, string> = {
   primary: 'bg-white text-brand-navy hover:bg-white/90 shadow-xl shadow-black/20',

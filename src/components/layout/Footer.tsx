@@ -50,9 +50,21 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-sm text-white/50 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <p>&copy; {year} YuTu Staff Solutions. Alle Rechte vorbehalten.</p>
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
             <a href="#" className="transition hover:text-white">Datenschutz</a>
             <a href="#" className="transition hover:text-white">Impressum</a>
+            <span className="text-white/30">|</span>
+            <span>
+              Entwickelt von{' '}
+              <a
+                href="https://www.dadakaev.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-brand-orange transition hover:text-brand-orange/80"
+              >
+                DADAKAEV Labs
+              </a>
+            </span>
           </div>
         </div>
       </div>

@@ -13,14 +13,14 @@ const testimonials = [
     role: 'Eventhelfer, Linz',
     image: '/images/testimonial-daniel.jpg',
     quote:
-      'Ohne langen Lebenslauf gleich losgelegt. Faire Bezahlung und die Koordination laeuft super persönlich ab.',
+      'Ohne langen Lebenslauf gleich losgelegt. Faire Bezahlung und die Koordination läuft super persönlich ab.',
   },
   {
     name: 'Yasmin S.',
     role: 'Reinigungskraft, Graz',
     image: '/images/testimonial-yasmin.jpg',
     quote:
-      'Ich kann meine Stunden rund um Familie und Kinder selbst waehlen. Team ist top - fuehle mich wirklich geschaetzt.',
+      'Ich kann meine Stunden rund um Familie und Kinder selbst wählen. Team ist top - fühle mich wirklich geschätzt.',
   },
 ];
 

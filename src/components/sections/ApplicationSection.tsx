@@ -14,7 +14,7 @@ const branchOptions = [
 ];
 
 const availabilityOptions = [
-  'Sofort verfuegbar',
+  'Sofort verfügbar',
   'Unter der Woche',
   'Abends',
   'Wochenende',
@@ -37,7 +37,7 @@ export function ApplicationSection() {
             </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
               Schnell bewerben, persönliche Rückmeldung erhalten und passende Jobs in deiner Region finden.
-              Ohne komplizierten Prozess und ohne unnoetige Huerden.
+              Ohne komplizierten Prozess und ohne unnötige Hürden.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -92,7 +92,7 @@ export function ApplicationSection() {
 
               <p className="hidden">
                 <label>
-                  Nicht ausfuellen:
+                  Nicht ausfüllen:
                   <input name="bot-field" />
                 </label>
               </p>
@@ -127,19 +127,19 @@ export function ApplicationSection() {
               </div>
 
               <div>
-                <label htmlFor="branche" className="mb-2 block text-sm font-semibold text-slate-700">Gewuenschte Branche</label>
+                <label htmlFor="branche" className="mb-2 block text-sm font-semibold text-slate-700">Gewünschte Branche</label>
                 <select id="branche" name="branche[]" multiple required className="min-h-[144px] w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100">
                   {branchOptions.map((option) => (
                     <option key={option} value={option}>{option}</option>
                   ))}
                 </select>
-                <p className="mt-2 text-sm text-slate-500">Mehrfachauswahl mit `Cmd` oder `Ctrl` moeglich.</p>
+                <p className="mt-2 text-sm text-slate-500">Mehrfachauswahl mit `Cmd` oder `Ctrl` möglich.</p>
               </div>
 
               <div>
                 <label htmlFor="verfügbarkeit" className="mb-2 block text-sm font-semibold text-slate-700">Verfügbarkeit</label>
                 <select id="verfügbarkeit" name="verfügbarkeit" required className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" defaultValue="">
-                  <option value="" disabled>Bitte waehlen</option>
+                  <option value="" disabled>Bitte wählen</option>
                   {availabilityOptions.map((option) => (
                     <option key={option} value={option}>{option}</option>
                   ))}

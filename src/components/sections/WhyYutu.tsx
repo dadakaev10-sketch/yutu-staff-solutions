@@ -24,7 +24,7 @@ const featureCards = [
   {
     icon: HeartHandshake,
     title: 'Einfach bewerben',
-    description: 'Kein Anschreiben, kein Lebenslauf-Zwang, keine unnoetigen Huerden.',
+    description: 'Kein Anschreiben, kein Lebenslauf-Zwang, keine unnötigen Hürden.',
   },
   {
     icon: Users,

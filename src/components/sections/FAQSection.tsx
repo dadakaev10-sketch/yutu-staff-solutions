@@ -24,12 +24,12 @@ const faqs = [
   {
     question: 'Kann ich Vollzeit oder nur nebenbei arbeiten?',
     answer:
-      'Beides ist moeglich. Egal ob Minijob, Nebenjob, Ferienjob oder Vollzeit - wir finden den passenden Einsatz für deine Zeitfenster.',
+      'Beides ist möglich. Egal ob Minijob, Nebenjob, Ferienjob oder Vollzeit - wir finden den passenden Einsatz für deine Zeitfenster.',
   },
   {
     question: 'Welche Unterlagen brauche ich, wenn es losgeht?',
     answer:
-      'Für den ersten Einsatz brauchst du: Reisepass oder Fuehrerschein (bzw. Aufenthaltstitel), e-card und Meldezettel. Ohne oesterreichische Staatsbuergerschaft zusaetzlich einen Nachweis ueber den freien Zugang zum Arbeitsmarkt. Alles Weitere klaeren wir persönlich mit dir.',
+      'Für den ersten Einsatz brauchst du: Reisepass oder Führerschein (bzw. Aufenthaltstitel), e-card und Meldezettel. Ohne österreichische Staatsbürgerschaft zusätzlich einen Nachweis über den freien Zugang zum Arbeitsmarkt. Alles Weitere klären wir persönlich mit dir.',
   },
 ];
 

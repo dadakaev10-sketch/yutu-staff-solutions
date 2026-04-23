@@ -4,21 +4,21 @@ import { Button } from '../ui/Button';
 const partnerBenefits = [
   {
     icon: Clock3,
-    title: 'Schnell verfuegbare Unterstuetzung',
+    title: 'Schnell verfügbare Unterstützung',
     description:
-      'Ob kurzfristige Ausfaelle, Stosszeiten oder saisonaler Mehrbedarf: YuTu vermittelt schnell passendes Personal.',
+      'Ob kurzfristige Ausfälle, Stoßzeiten oder saisonaler Mehrbedarf: YuTu vermittelt schnell passendes Personal.',
   },
   {
     icon: Users,
     title: 'Persönlich abgestimmte Besetzung',
     description:
-      'Wir achten nicht nur auf Verfügbarkeit, sondern auch auf Einsatzbereich, Teamfit und regionale Naehe.',
+      'Wir achten nicht nur auf Verfügbarkeit, sondern auch auf Einsatzbereich, Teamfit und regionale Nähe.',
   },
   {
     icon: BriefcaseBusiness,
     title: 'Flexibel für viele Branchen',
     description:
-      'Von Gastronomie ueber Event bis Logistik und Reinigung - wir unterstützen Betriebe dort, wo sie Entlastung brauchen.',
+      'Von Gastronomie über Event bis Logistik und Reinigung - wir unterstützen Betriebe dort, wo sie Entlastung brauchen.',
   },
 ];
 
@@ -33,13 +33,13 @@ export function PartnerSection() {
             </span>
 
             <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-              Verlaessliches Personal. Schnell, flexibel und menschlich.
+              Verlässliches Personal. Schnell, flexibel und menschlich.
             </h2>
 
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/80">
-              YuTu unterstuetzt Betriebe in Wien, Linz, Graz und Umgebung mit flexiblen Mitarbeiter:innen für
+              YuTu unterstützt Betriebe in Wien, Linz, Graz und Umgebung mit flexiblen Mitarbeiter:innen für
               Gastronomie, Reinigung, Event, Security, Handel, Logistik und mehr. Persönlich abgestimmt statt
-              anonymer Standardloesung.
+              anonymer Standardlösung.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -78,7 +78,7 @@ export function PartnerSection() {
               </div>
               <h3 className="mt-5 text-2xl font-bold tracking-tight text-slate-950">Kurz Personalbedarf senden</h3>
               <p className="mt-3 text-base leading-8 text-slate-600">
-                Du suchst verlaessliche Unterstuetzung für dein Team? Sende uns die wichtigsten Infos und wir melden
+                Du suchst verlässliche Unterstützung für dein Team? Sende uns die wichtigsten Infos und wir melden
                 uns zeitnah mit einer passenden Rückmeldung.
               </p>
             </div>
@@ -105,8 +105,8 @@ export function PartnerSection() {
               </div>
 
               <div className="sm:col-span-2">
-                <label htmlFor="betrieb-bedarf" className="mb-2 block text-sm font-semibold text-slate-700">Was wird benoetigt?</label>
-                <textarea id="betrieb-bedarf" rows={5} className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="z. B. 4 Servicekraefte für Event, kurzfristig ab naechster Woche in Wien" />
+                <label htmlFor="betrieb-bedarf" className="mb-2 block text-sm font-semibold text-slate-700">Was wird benötigt?</label>
+                <textarea id="betrieb-bedarf" rows={5} className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" placeholder="z. B. 4 Servicekräfte für Event, kurzfristig ab nächster Woche in Wien" />
               </div>
 
               <div className="sm:col-span-2">

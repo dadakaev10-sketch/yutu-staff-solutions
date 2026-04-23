@@ -29,7 +29,7 @@ export function Hero() {
         <div className="grid w-full gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="max-w-3xl">
             <div className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur">
-              Persoenlich, regional, menschlich
+              Persönlich, regional, menschlich
             </div>
 
             <h1
@@ -42,7 +42,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">
-              Schnell bewerben • Persoenliche Rueckmeldung • Jobs direkt in deiner Region
+              Schnell bewerben • Persönliche Rückmeldung • Jobs direkt in deiner Region
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -59,7 +59,7 @@ export function Hero() {
                 variant="outline"
                 className="rounded-full border-white/20 bg-white/10 text-white backdrop-blur hover:bg-white/15"
               >
-                <a href="#partner">Fuer Partnerbetriebe</a>
+                <a href="#partner">Für Partnerbetriebe</a>
               </Button>
             </div>
 
@@ -92,13 +92,13 @@ export function Hero() {
                 Flexible Jobs in Wien, Linz, Graz und Umgebung
               </h2>
               <p className="mt-3 text-white/75">
-                Ob Studium, Familie oder Hauptjob: Wir finden Einsaetze, die zu deinem Alltag passen.
+                Ob Studium, Familie oder Hauptjob: Wir finden Einsätze, die zu deinem Alltag passen.
               </p>
 
               <ul className="mt-6 space-y-3 text-sm text-white/85">
                 <li className="rounded-xl bg-white/10 px-4 py-3">Ohne Lebenslauf-Zwang</li>
-                <li className="rounded-xl bg-white/10 px-4 py-3">Persoenlicher Kontakt statt Massenabfertigung</li>
-                <li className="rounded-xl bg-white/10 px-4 py-3">Faire Bezahlung und schnelle Rueckmeldung</li>
+                <li className="rounded-xl bg-white/10 px-4 py-3">Persönlicher Kontakt statt Massenabfertigung</li>
+                <li className="rounded-xl bg-white/10 px-4 py-3">Faire Bezahlung und schnelle Rückmeldung</li>
               </ul>
             </div>
           </div>

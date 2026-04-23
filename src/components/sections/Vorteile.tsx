@@ -6,28 +6,28 @@ const benefitRows = [
     title: 'Flexible Arbeitszeiten',
     description:
       'Schichten rund um Studium, Familie oder Hauptjob. Du entscheidest mit, wann und wie oft du arbeiten willst.',
-    image: '/images/benefit-flexibel.jpg',
+    image: '/branchen/benefit-flexibel.png',
     icon: Clock3,
   },
   {
-    title: 'Persoenlich & regional',
+    title: 'Persönlich & regional',
     description:
-      'Wir kennen unsere Partnerbetriebe und schauen genau, welcher Einsatz zu dir, deinem Wohnort und deiner Verfuegbarkeit passt.',
-    image: '/images/benefit-persoenlich.jpg',
+      'Wir kennen unsere Partnerbetriebe und schauen genau, welcher Einsatz zu dir, deinem Wohnort und deiner Verfügbarkeit passt.',
+    image: '/branchen/benefit-persönlich.jpg',
     icon: MapPinned,
   },
   {
     title: 'Faire Bezahlung',
     description:
-      'Transparente Stundensaetze, klare Kommunikation und puenktliche Auszahlung. So soll Personaldienstleistung sein.',
-    image: '/images/benefit-fair.jpg',
+      'Transparente Stundensätze, klare Kommunikation und pünktliche Auszahlung. So soll Personaldienstleistung sein.',
+    image: '/branchen/benefit-fair.jpg',
     icon: BadgeEuro,
   },
   {
     title: 'Schnell vom Kontakt zum Einsatz',
     description:
-      'Kein unnoetiger Papierkram, kein komplizierter Prozess. Wir melden uns schnell und bringen dich zuegig in passende Einsaetze.',
-    image: '/images/benefit-schnell.jpg',
+      'Kein unnötiger Papierkram, kein komplizierter Prozess. Wir melden uns schnell und bringen dich zügig in passende Einsätze.',
+    image: '/branchen/benefit-schnell.png',
     icon: HeartHandshake,
   },
 ];
@@ -44,7 +44,7 @@ export function Vorteile() {
             Flexibel arbeiten. Fair bezahlt werden. Menschlich begleitet.
           </h2>
           <p className="mt-4 text-lg leading-8 text-slate-600">
-            YuTu verbindet schnelle Prozesse mit persoenlicher Betreuung. Genau das macht den Unterschied zwischen
+            YuTu verbindet schnelle Prozesse mit persönlicher Betreuung. Genau das macht den Unterschied zwischen
             irgendeinem Job und einem Einsatz, der wirklich passt.
           </p>
         </div>

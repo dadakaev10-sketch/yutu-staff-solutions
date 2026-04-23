@@ -6,14 +6,14 @@ const testimonials = [
     role: 'Servicekraft, Wien',
     image: '/images/testimonial-lara.jpg',
     quote:
-      'Super schnelle Rueckmeldung - innerhalb eines Tages hatte ich meinen ersten Einsatz. Flexible Schichten neben dem Studium sind Gold wert.',
+      'Super schnelle Rückmeldung - innerhalb eines Tages hatte ich meinen ersten Einsatz. Flexible Schichten neben dem Studium sind Gold wert.',
   },
   {
     name: 'Daniel K.',
     role: 'Eventhelfer, Linz',
     image: '/images/testimonial-daniel.jpg',
     quote:
-      'Ohne langen Lebenslauf gleich losgelegt. Faire Bezahlung und die Koordination laeuft super persoenlich ab.',
+      'Ohne langen Lebenslauf gleich losgelegt. Faire Bezahlung und die Koordination laeuft super persönlich ab.',
   },
   {
     name: 'Yasmin S.',
@@ -36,7 +36,7 @@ export function Testimonials() {
             Echte Menschen. Echte Jobs. Echte Erfahrungen.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Das sagen Menschen, die bereits mit YuTu gearbeitet haben - persoenlich betreut, regional vermittelt und
+            Das sagen Menschen, die bereits mit YuTu gearbeitet haben - persönlich betreut, regional vermittelt und
             flexibel im Einsatz.
           </p>
         </div>

@@ -9,7 +9,7 @@ export default function HeroSectionDemo() {
           alt: 'YuTu Logo',
           text: 'YuTu Staff Solutions',
         }}
-        slogan="Regional. Flexibel. Persoenlich."
+        slogan="Regional. Flexibel. Persönlich."
         title={
           <>
             Finde Jobs,
@@ -17,7 +17,7 @@ export default function HeroSectionDemo() {
             <span className="text-brand-orange">die zu deinem Alltag passen.</span>
           </>
         }
-        subtitle="Schnell bewerben, persoenlich Rueckmeldung bekommen und flexible Einsaetze in deiner Region finden."
+        subtitle="Schnell bewerben, persönlich Rückmeldung bekommen und flexible Einsätze in deiner Region finden."
         callToAction={{
           text: 'Jetzt bewerben',
           href: '#bewerbung',

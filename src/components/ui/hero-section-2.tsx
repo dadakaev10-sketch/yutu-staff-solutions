@@ -17,7 +17,7 @@ function InfoIcon({ type }: { type: InfoType }) {
   return <div className="mr-2 flex-shrink-0">{icons[type]}</div>;
 }
 
-const mobileTrustItems = ['Ohne Lebenslauf', 'Schnelle Rueckmeldung', 'Jobs in deiner Region'];
+const mobileTrustItems = ['Ohne Lebenslauf', 'Schnelle Rückmeldung', 'Jobs in deiner Region'];
 
 interface HeroSectionProps {
   id?: string;
@@ -169,7 +169,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroSectionProps>(function Her
               Jetzt im Einsatz
             </div>
             <div className="mt-2 text-2xl font-extrabold leading-tight tracking-tight text-white">
-              Flexible Jobs, persoenlicher Kontakt, regionale Einsaetze.
+              Flexible Jobs, persönlicher Kontakt, regionale Einsätze.
             </div>
           </div>
         </motion.div>

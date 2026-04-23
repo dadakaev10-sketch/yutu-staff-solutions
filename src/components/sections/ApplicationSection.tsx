@@ -36,7 +36,7 @@ export function ApplicationSection() {
               In 2 Minuten zum passenden Einsatz
             </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
-              Schnell bewerben, persoenliche Rueckmeldung erhalten und passende Jobs in deiner Region finden.
+              Schnell bewerben, persönliche Rückmeldung erhalten und passende Jobs in deiner Region finden.
               Ohne komplizierten Prozess und ohne unnoetige Huerden.
             </p>
 
@@ -46,7 +46,7 @@ export function ApplicationSection() {
                   <Clock3 className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-950">Schnelle Rueckmeldung</div>
+                  <div className="font-bold text-slate-950">Schnelle Rückmeldung</div>
                   <p className="mt-1 text-sm leading-6 text-slate-600">
                     Wir melden uns in der Regel innerhalb von 24 Stunden.
                   </p>
@@ -60,7 +60,7 @@ export function ApplicationSection() {
                 <div>
                   <div className="font-bold text-slate-950">Regional & passend</div>
                   <p className="mt-1 text-sm leading-6 text-slate-600">
-                    Wir schauen auf Wohnort, Verfuegbarkeit und Einsatzbereich.
+                    Wir schauen auf Wohnort, Verfügbarkeit und Einsatzbereich.
                   </p>
                 </div>
               </div>
@@ -70,9 +70,9 @@ export function ApplicationSection() {
                   <PhoneCall className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-950">Persoenlicher Kontakt</div>
+                  <div className="font-bold text-slate-950">Persönlicher Kontakt</div>
                   <p className="mt-1 text-sm leading-6 text-slate-600">
-                    Keine anonyme Massenabwicklung - wir sprechen persoenlich mit dir.
+                    Keine anonyme Massenabwicklung - wir sprechen persönlich mit dir.
                   </p>
                 </div>
               </div>
@@ -137,8 +137,8 @@ export function ApplicationSection() {
               </div>
 
               <div>
-                <label htmlFor="verfuegbarkeit" className="mb-2 block text-sm font-semibold text-slate-700">Verfuegbarkeit</label>
-                <select id="verfuegbarkeit" name="verfuegbarkeit" required className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" defaultValue="">
+                <label htmlFor="verfügbarkeit" className="mb-2 block text-sm font-semibold text-slate-700">Verfügbarkeit</label>
+                <select id="verfügbarkeit" name="verfügbarkeit" required className="h-12 w-full rounded-2xl border border-slate-300 px-4 text-slate-900 outline-none transition focus:border-brand-navy focus:ring-4 focus:ring-blue-100" defaultValue="">
                   <option value="" disabled>Bitte waehlen</option>
                   {availabilityOptions.map((option) => (
                     <option key={option} value={option}>{option}</option>

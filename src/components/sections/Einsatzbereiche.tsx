@@ -12,14 +12,14 @@ import {
 import { Button } from '../ui/Button';
 
 const branches = [
-  { title: 'Gastronomie', description: 'Service, Bar, Kuechenhilfe', image: '/images/branche-gastro.jpg', icon: UtensilsCrossed },
-  { title: 'Reinigung', description: 'Buero, Objekt, Hotellerie', image: '/images/branche-reinigung.jpg', icon: Sparkles },
-  { title: 'Event', description: 'Messen, Konzerte, Gala', image: '/images/branche-event.jpg', icon: PartyPopper },
-  { title: 'Security', description: 'Veranstaltung & Objekt', image: '/images/branche-security.jpg', icon: ShieldCheck },
-  { title: 'Hotellerie', description: 'Rezeption & Housekeeping', image: '/images/branche-hotel.jpg', icon: Hotel },
-  { title: 'Logistik', description: 'Lager, Kommissionierung', image: '/images/branche-logistik.jpg', icon: Truck },
-  { title: 'Produktion', description: 'Helfer & Fachkraefte', image: '/images/branche-produktion.jpg', icon: Factory },
-  { title: 'Handel', description: 'Promotion & Verkauf', image: '/images/branche-handel.jpg', icon: ShoppingBag },
+  { title: 'Gastronomie', description: 'Service, Bar, Küchenhilfe', image: '/branchen/Gastronomie.jpg', icon: UtensilsCrossed },
+  { title: 'Reinigung', description: 'Büro, Objekt, Hotellerie', image: '/branchen/Reinigung.jpg', icon: Sparkles },
+  { title: 'Event', description: 'Messen, Konzerte, Gala', image: '/branchen/Event.jpg', icon: PartyPopper },
+  { title: 'Security', description: 'Veranstaltung & Objekt', image: '/branchen/Security.jpg', icon: ShieldCheck },
+  { title: 'Hotellerie', description: 'Rezeption & Housekeeping', image: '/branchen/Rezeption.jpg', icon: Hotel },
+  { title: 'Logistik', description: 'Lager, Kommissionierung', image: '/branchen/Logistik.jpg', icon: Truck },
+  { title: 'Produktion', description: 'Helfer & Fachkräfte', image: '/branchen/Produktion.jpg', icon: Factory },
+  { title: 'Handel', description: 'Promotion & Verkauf', image: '/branchen/HandelPromotion.jpg', icon: ShoppingBag },
 ];
 
 export function Einsatzbereiche() {
@@ -32,12 +32,12 @@ export function Einsatzbereiche() {
               Einsatzbereiche
             </span>
             <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-              Viele Branchen. Ein persoenlicher Ansprechpartner.
+              Viele Branchen. Ein persönlicher Ansprechpartner.
             </h2>
           </div>
 
           <p className="max-w-2xl text-lg leading-8 text-slate-600 lg:ml-auto">
-            Ob Gastro, Event, Reinigung oder Logistik: Wir finden Einsaetze, die zu deinen Zeiten, deinem Wohnort und
+            Ob Gastro, Event, Reinigung oder Logistik: Wir finden Einsätze, die zu deinen Zeiten, deinem Wohnort und
             deinem Tempo passen.
           </p>
         </div>

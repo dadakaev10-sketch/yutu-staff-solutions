@@ -8,18 +8,18 @@ const featureCards = [
   },
   {
     icon: MapPinned,
-    title: 'Persoenlich & regional',
+    title: 'Persönlich & regional',
     description: 'Wir vermitteln Jobs in Wien, Linz, Graz und Umgebung mit echtem lokalem Bezug.',
   },
   {
     icon: BadgeEuro,
     title: 'Faire Bezahlung',
-    description: 'Transparente Stundensaetze und puenktliche Auszahlung.',
+    description: 'Transparente Stundensätze und pünktliche Auszahlung.',
   },
   {
     icon: Rocket,
     title: 'Schnell vom Kontakt zum Einsatz',
-    description: 'Wir melden uns in der Regel innerhalb von 24 Stunden zurueck.',
+    description: 'Wir melden uns in der Regel innerhalb von 24 Stunden zurück.',
   },
   {
     icon: HeartHandshake,
@@ -29,7 +29,7 @@ const featureCards = [
   {
     icon: Users,
     title: 'Alle willkommen',
-    description: 'Wir matchen nach Motivation, Verfuegbarkeit und Einsatzbereich.',
+    description: 'Wir matchen nach Motivation, Verfügbarkeit und Einsatzbereich.',
   },
 ];
 
@@ -42,10 +42,10 @@ export function WhyYutu() {
             Warum YuTu?
           </span>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            Persoenlich, regional und schnell zum passenden Job.
+            Persönlich, regional und schnell zum passenden Job.
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-            YuTu verbindet Menschen mit flexiblen Einsaetzen in ihrer Region. Der Fokus liegt auf ehrlicher Kommunikation,
+            YuTu verbindet Menschen mit flexiblen Einsätzen in ihrer Region. Der Fokus liegt auf ehrlicher Kommunikation,
             kurzen Wegen und Jobs, die wirklich zum Alltag passen.
           </p>
         </div>

@@ -12,7 +12,7 @@ export function Hero() {
           <span className="text-brand-orange">gesucht?</span>
         </>
       }
-      subtitle="Schnell bewerben, persoenlich Rueckmeldung bekommen und flexible Jobs direkt in deiner Region finden."
+      subtitle="Schnell bewerben, persönlich Rückmeldung bekommen und flexible Jobs direkt in deiner Region finden."
       callToAction={{
         text: 'Jetzt bewerben',
         href: '#bewerbung',

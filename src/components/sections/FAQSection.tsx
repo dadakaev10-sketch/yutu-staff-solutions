@@ -9,27 +9,27 @@ const faqs = [
   {
     question: 'Wie schnell melde ich mich nach der Bewerbung?',
     answer:
-      'Wir melden uns in der Regel innerhalb von 24 Stunden per Telefon oder E-Mail bei dir zurueck - oft sogar schneller.',
+      'Wir melden uns in der Regel innerhalb von 24 Stunden per Telefon oder E-Mail bei dir zurück - oft sogar schneller.',
   },
   {
     question: 'Ist die Bewerbung wirklich kostenlos?',
     answer:
-      'Ja, zu 100 %. Fuer Bewerber:innen fallen bei YuTu nie Kosten an - weder fuer die Vermittlung noch fuer den Einsatz.',
+      'Ja, zu 100 %. Für Bewerber:innen fallen bei YuTu nie Kosten an - weder für die Vermittlung noch für den Einsatz.',
   },
   {
     question: 'Ab welchem Alter kann ich mitmachen?',
     answer:
-      'Du musst mindestens 15 Jahre alt sein. Fuer manche Einsatzbereiche (z. B. Security oder Gastronomie mit Alkoholausschank) gelten hoehere Altersgrenzen.',
+      'Du musst mindestens 15 Jahre alt sein. Für manche Einsatzbereiche (z. B. Security oder Gastronomie mit Alkoholausschank) gelten höhere Altersgrenzen.',
   },
   {
     question: 'Kann ich Vollzeit oder nur nebenbei arbeiten?',
     answer:
-      'Beides ist moeglich. Egal ob Minijob, Nebenjob, Ferienjob oder Vollzeit - wir finden den passenden Einsatz fuer deine Zeitfenster.',
+      'Beides ist moeglich. Egal ob Minijob, Nebenjob, Ferienjob oder Vollzeit - wir finden den passenden Einsatz für deine Zeitfenster.',
   },
   {
     question: 'Welche Unterlagen brauche ich, wenn es losgeht?',
     answer:
-      'Fuer den ersten Einsatz brauchst du: Reisepass oder Fuehrerschein (bzw. Aufenthaltstitel), e-card und Meldezettel. Ohne oesterreichische Staatsbuergerschaft zusaetzlich einen Nachweis ueber den freien Zugang zum Arbeitsmarkt. Alles Weitere klaeren wir persoenlich mit dir.',
+      'Für den ersten Einsatz brauchst du: Reisepass oder Fuehrerschein (bzw. Aufenthaltstitel), e-card und Meldezettel. Ohne oesterreichische Staatsbuergerschaft zusaetzlich einen Nachweis ueber den freien Zugang zum Arbeitsmarkt. Alles Weitere klaeren wir persönlich mit dir.',
   },
 ];
 

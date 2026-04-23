@@ -16,8 +16,8 @@ export function Footer() {
           </div>
 
           <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
-            Flexibler Personaldienstleister fuer Nebenjobs in Wien, Linz, Graz und Umgebung.
-            Persoenlich, regional, schnell und menschlich.
+            Flexibler Personaldienstleister für Nebenjobs in Wien, Linz, Graz und Umgebung.
+            Persönlich, regional, schnell und menschlich.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export function Footer() {
             <li><a href="#vorteile" className="transition hover:text-white">Vorteile</a></li>
             <li><a href="#stimmen" className="transition hover:text-white">Stimmen</a></li>
             <li><a href="#einsatzbereiche" className="transition hover:text-white">Einsatzbereiche</a></li>
-            <li><a href="#partner" className="transition hover:text-white">Fuer Betriebe</a></li>
+            <li><a href="#partner" className="transition hover:text-white">Für Betriebe</a></li>
             <li><a href="#faq" className="transition hover:text-white">FAQ</a></li>
           </ul>
         </div>

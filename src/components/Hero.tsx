@@ -4,11 +4,6 @@ export function Hero() {
   return (
     <HeroSection
       id="top"
-      logo={{
-        url: '/ytlogo.png',
-        alt: 'YuTu Logo',
-        text: 'YuTu Staff Solutions',
-      }}
       slogan="Dein Nebenjob. Regional. Flexibel."
       title={
         <>

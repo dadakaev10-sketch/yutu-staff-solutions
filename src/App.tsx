@@ -10,6 +10,7 @@ import { Einsatzbereiche } from './components/sections/Einsatzbereiche';
 import { FAQSection } from './components/sections/FAQSection';
 import { Hero } from './components/sections/Hero';
 import { PartnerSection } from './components/sections/PartnerSection';
+import { ProcessSection } from './components/sections/ProcessSection';
 import { Vorteile } from './components/sections/Vorteile';
 import { WhyYutu } from './components/sections/WhyYutu';
 
@@ -45,6 +46,7 @@ export default function App() {
 
       <main>
         <Hero />
+        <ProcessSection />
         <WhyYutu />
         <Einsatzbereiche />
         <Vorteile />

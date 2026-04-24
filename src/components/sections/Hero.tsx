@@ -4,10 +4,10 @@ import { gsap } from 'gsap';
 import { Button } from '../ui/Button';
 
 const trustItems = [
-  { icon: Users, value: '500+', label: 'Menschen im Einsatz' },
-  { icon: ShieldCheck, value: '50+', label: 'Partner-Betriebe' },
-  { icon: Clock3, value: '24h', label: 'Antwortzeit' },
-  { icon: MapPin, value: '100%', label: 'kostenlos' },
+  { icon: Users, num: 500, suffix: '+', label: 'Menschen im Einsatz' },
+  { icon: ShieldCheck, num: 50, suffix: '+', label: 'Partner-Betriebe' },
+  { icon: Clock3, num: 24, suffix: 'h', label: 'Antwortzeit' },
+  { icon: MapPin, num: 100, suffix: '%', label: 'kostenlos' },
 ];
 
 export function Hero() {
@@ -16,6 +16,7 @@ export function Hero() {
   const subRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<(HTMLDivElement | null)[]>([]);
+  const counterEls = useRef<(HTMLSpanElement | null)[]>([]);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,6 +34,20 @@ export function Hero() {
           '-=0.2'
         )
         .fromTo(cardRef.current, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 }, '-=0.6');
+
+      // Animated counters
+      trustItems.forEach(({ num, suffix }, i) => {
+        const el = counterEls.current[i];
+        if (!el) return;
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: num,
+          duration: 2,
+          delay: 0.8 + i * 0.1,
+          ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; },
+        });
+      });
     });
 
     return () => ctx.revert();
@@ -94,7 +109,7 @@ export function Hero() {
             </div>
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {trustItems.map(({ icon: Icon, value, label }, i) => (
+              {trustItems.map(({ icon: Icon, suffix, label }, i) => (
                 <div
                   key={label}
                   ref={(el) => { trustRef.current[i] = el; }}
@@ -105,7 +120,12 @@ export function Hero() {
                       <Icon className="h-5 w-5" />
                     </span>
                     <div>
-                      <div className="text-xl font-bold text-white">{value}</div>
+                      <span
+                        ref={(el) => { counterEls.current[i] = el; }}
+                        className="text-xl font-bold text-white"
+                      >
+                        0{suffix}
+                      </span>
                       <div className="text-sm text-white/75">{label}</div>
                     </div>
                   </div>

@@ -115,19 +115,17 @@ export function Hero() {
                   ref={(el) => { trustRef.current[i] = el; }}
                   className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-center gap-2 text-center">
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#10B981]/20 text-[#10B981]">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <div>
-                      <span
-                        ref={(el) => { counterEls.current[i] = el; }}
-                        className="text-xl font-bold text-white"
-                      >
-                        0{suffix}
-                      </span>
-                      <div className="text-sm text-white/75">{label}</div>
-                    </div>
+                    <span
+                      ref={(el) => { counterEls.current[i] = el; }}
+                      className="text-2xl font-bold leading-none text-white"
+                    >
+                      0{suffix}
+                    </span>
+                    <div className="text-sm leading-tight text-white/75">{label}</div>
                   </div>
                 </div>
               ))}

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { CheckCircle2, MessageCircle, Rocket } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
@@ -9,21 +9,18 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     number: '01',
-    icon: Rocket,
     title: 'Formular ausfüllen',
     description: 'In 2 Minuten beworben — ohne Lebenslauf-Zwang. Nur Name, Kontakt und Wunschbranche.',
     detail: 'Kein Anschreiben, keine komplizierte Registrierung.',
   },
   {
     number: '02',
-    icon: MessageCircle,
     title: 'Persönliches Gespräch',
     description: 'Wir melden uns innerhalb von 24 Stunden per Telefon oder E-Mail — persönlich, nicht automatisiert.',
     detail: 'Wir schauen gemeinsam, welche Einsätze zu dir passen.',
   },
   {
     number: '03',
-    icon: CheckCircle2,
     title: 'Erster Einsatz',
     description: 'Oft schon in der ersten Woche. Du wählst wann und wie oft — wir kümmern uns um den Rest.',
     detail: 'Faire Bezahlung, pünktliche Abrechnung.',
@@ -79,7 +76,7 @@ export function ProcessSection() {
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {steps.map(({ number, icon: Icon, title, description, detail }, i) => (
+          {steps.map(({ number, title, description, detail }, i) => (
             <div
               key={number}
               ref={(el) => { stepsRef.current[i] = el; }}

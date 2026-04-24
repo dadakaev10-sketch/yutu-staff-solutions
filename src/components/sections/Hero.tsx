@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight, Clock3, MapPin, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight, Clock3, Scale, ShieldCheck, Users } from 'lucide-react';
 import { gsap } from 'gsap';
 import { Button } from '../ui/Button';
 
@@ -7,7 +7,7 @@ const trustItems = [
   { icon: Users, num: 500, suffix: '+', label: 'Menschen im Einsatz' },
   { icon: ShieldCheck, num: 50, suffix: '+', label: 'Partner-Betriebe' },
   { icon: Clock3, num: 24, suffix: 'h', label: 'Antwortzeit' },
-  { icon: MapPin, num: 100, suffix: '%', label: 'kostenlos' },
+  { icon: Scale, num: 100, suffix: '%', label: 'Arbeitsrechtliche Sicherheit' },
 ];
 
 export function Hero() {

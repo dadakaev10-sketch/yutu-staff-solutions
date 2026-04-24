@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight, CheckCircle2, MessageCircle, Rocket } from 'lucide-react';
+import { CheckCircle2, MessageCircle, Rocket } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
@@ -95,9 +95,6 @@ export function ProcessSection() {
               )}
 
               <div className="flex items-start justify-between">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-navy text-white shadow-lg shadow-blue-900/20">
-                  <Icon className="h-6 w-6" />
-                </div>
                 <span className="text-5xl font-black text-slate-100">{number}</span>
               </div>
 
@@ -112,10 +109,7 @@ export function ProcessSection() {
 
         <div className="mt-10 flex justify-center">
           <Button asChild size="lg" className="rounded-full px-8">
-            <a href="#bewerbung">
-              Jetzt starten — kostenlos
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            <a href="#bewerbung">Jetzt starten</a>
           </Button>
         </div>
       </div>

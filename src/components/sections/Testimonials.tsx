@@ -1,34 +1,75 @@
+import { useEffect, useRef } from 'react';
 import { Quote, Star } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
     name: 'Lara M.',
     role: 'Servicekraft, Wien',
-    image: '/images/testimonial-lara.jpg',
+    initials: 'LM',
+    accent: 'bg-orange/20 text-orange',
     quote:
-      'Super schnelle Rückmeldung - innerhalb eines Tages hatte ich meinen ersten Einsatz. Flexible Schichten neben dem Studium sind Gold wert.',
+      'Super schnelle Rückmeldung – innerhalb eines Tages hatte ich meinen ersten Einsatz. Flexible Schichten neben dem Studium sind Gold wert.',
   },
   {
     name: 'Daniel K.',
     role: 'Eventhelfer, Linz',
-    image: '/images/testimonial-daniel.jpg',
+    initials: 'DK',
+    accent: 'bg-emerald-500/20 text-emerald-300',
     quote:
       'Ohne langen Lebenslauf gleich losgelegt. Faire Bezahlung und die Koordination läuft super persönlich ab.',
   },
   {
     name: 'Yasmin S.',
     role: 'Reinigungskraft, Graz',
-    image: '/images/testimonial-yasmin.jpg',
+    initials: 'YS',
+    accent: 'bg-sky-500/20 text-sky-300',
     quote:
-      'Ich kann meine Stunden rund um Familie und Kinder selbst wählen. Team ist top - fühle mich wirklich geschätzt.',
+      'Ich kann meine Stunden rund um Familie und Kinder selbst wählen. Team ist top – fühle mich wirklich geschätzt.',
   },
 ];
 
 export function Testimonials() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (headingRef.current) {
+        gsap.set(headingRef.current, { opacity: 0, y: 30 });
+        ScrollTrigger.create({
+          trigger: headingRef.current,
+          start: 'top 88%',
+          onEnter: () =>
+            gsap.to(headingRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }),
+          once: true,
+        });
+      }
+
+      const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
+      if (cards.length) {
+        gsap.set(cards, { opacity: 0, y: 40 });
+        ScrollTrigger.create({
+          trigger: cards[0],
+          start: 'top 90%',
+          onEnter: () =>
+            gsap.to(cards, { opacity: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out' }),
+          once: true,
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="stimmen" className="bg-slate-950 py-20 text-white sm:py-24">
+    <section ref={sectionRef} id="stimmen" className="bg-slate-950 py-20 text-white sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+        <div ref={headingRef} className="max-w-3xl">
           <span className="inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-brand-green">
             Stimmen aus dem Team
           </span>
@@ -36,37 +77,51 @@ export function Testimonials() {
             Echte Menschen. Echte Jobs. Echte Erfahrungen.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Das sagen Menschen, die bereits mit YuTu gearbeitet haben - persönlich betreut, regional vermittelt und
-            flexibel im Einsatz.
+            Das sagen Menschen, die bereits mit YuTu gearbeitet haben – persönlich betreut,
+            regional vermittelt und flexibel im Einsatz.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, i) => (
             <article
               key={testimonial.name}
+              ref={(el) => { cardsRef.current[i] = el; }}
               className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/10"
             >
               <div className="flex items-center gap-4">
-                <img src={testimonial.image} alt={testimonial.name} className="h-16 w-16 rounded-2xl object-cover" loading="lazy" />
+                <div
+                  aria-hidden="true"
+                  className={`flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold ${testimonial.accent}`}
+                >
+                  {testimonial.initials}
+                </div>
                 <div>
                   <div className="text-lg font-bold tracking-tight text-white">{testimonial.name}</div>
                   <div className="text-sm text-white/60">{testimonial.role}</div>
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center gap-1 text-brand-orange">
+              <div
+                className="mt-6 flex items-center gap-1 text-brand-orange"
+                aria-label={`Bewertung: 5 von 5 Sternen`}
+              >
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} className="h-4 w-4 fill-current" />
+                  <Star key={index} className="h-4 w-4 fill-current" aria-hidden="true" />
                 ))}
               </div>
 
-              <Quote className="mt-6 h-8 w-8 text-brand-green" />
+              <Quote className="mt-6 h-8 w-8 text-brand-green" aria-hidden="true" />
 
               <p className="mt-4 flex-1 text-base leading-8 text-white/80">{testimonial.quote}</p>
             </article>
           ))}
         </div>
+
+        <p className="mt-10 text-xs text-white/40">
+          Stimmen werden mit Einverständnis der Mitarbeiter:innen veröffentlicht. Sobald die ersten
+          freigegebenen Bewertungen vorliegen, ersetzen wir die hier abgebildeten Beispiele.
+        </p>
       </div>
     </section>
   );

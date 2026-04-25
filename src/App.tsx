@@ -10,6 +10,7 @@ import { Danke } from './pages/Danke';
 import { Datenschutz } from './pages/Datenschutz';
 import { Home } from './pages/Home';
 import { Impressum } from './pages/Impressum';
+import { NotFound } from './pages/NotFound';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,7 @@ export default function App() {
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
         <Route path="/danke" element={<Danke />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

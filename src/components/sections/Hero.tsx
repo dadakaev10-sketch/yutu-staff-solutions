@@ -64,11 +64,11 @@ export function Hero() {
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,48,135,0.72),rgba(0,48,135,0.86))]"
+        className="absolute inset-0 bg-[linear-gradient(120deg,rgba(15,23,42,0.78)_0%,rgba(15,23,42,0.55)_55%,rgba(15,23,42,0.35)_100%)]"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,rgba(255,107,0,0.32),transparent_60%)]"
+        className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,transparent,rgba(15,23,42,0.6))]"
         aria-hidden="true"
       />
 

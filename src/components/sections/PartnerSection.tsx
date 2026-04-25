@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, BriefcaseBusiness, Building2, CheckCircle2, Clock3, Users } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowRight, BriefcaseBusiness, Building2, Clock3, Users } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
@@ -25,13 +25,14 @@ const partnerBenefits = [
   },
 ];
 
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+type Status = 'idle' | 'submitting' | 'error';
 
 export function PartnerSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const heroBoxRef = useRef<HTMLDivElement>(null);
   const benefitsRef = useRef<(HTMLDivElement | null)[]>([]);
   const formBoxRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -91,8 +92,9 @@ export function PartnerSection() {
       const json = await response.json().catch(() => ({}));
 
       if (response.ok && (json.success ?? true)) {
-        setStatus('success');
         form.reset();
+        navigate('/danke?type=partner');
+        return;
       } else {
         setStatus('error');
         setErrorMessage(json.message || 'Übertragung fehlgeschlagen. Bitte versuche es erneut.');
@@ -178,29 +180,7 @@ export function PartnerSection() {
               </p>
             </div>
 
-            {status === 'success' ? (
-              <div role="status" aria-live="polite" className="flex flex-col items-center py-10 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                  <CheckCircle2 className="h-9 w-9" />
-                </div>
-                <h3 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Anfrage erhalten!
-                </h3>
-                <p className="mt-3 max-w-md text-base leading-7 text-gray-600 dark:text-white/70">
-                  Vielen Dank für deine Anfrage. Wir melden uns innerhalb von 24 Stunden mit einer
-                  passenden Rückmeldung.
-                </p>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="mt-8 rounded-full"
-                  onClick={() => setStatus('idle')}
-                >
-                  Weitere Anfrage senden
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+            <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
                 <input type="hidden" name="access_key" value="d8839665-14bd-48f6-ab28-effc6add4b2d" />
                 <input type="hidden" name="subject" value="Neue Personalanfrage - YuTu Staff Solutions" />
                 <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
@@ -258,8 +238,7 @@ export function PartnerSection() {
                     {status === 'submitting' ? 'Wird gesendet …' : 'Anfrage senden'}
                   </Button>
                 </div>
-              </form>
-            )}
+            </form>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Footer } from './components/layout/Footer';
 import { MobileStickyCTA } from './components/layout/MobileStickyCTA';
 import { Navbar } from './components/layout/Navbar';
+import { Danke } from './pages/Danke';
 import { Datenschutz } from './pages/Datenschutz';
 import { Home } from './pages/Home';
 import { Impressum } from './pages/Impressum';
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/danke" element={<Danke />} />
         <Route path="*" element={<Home />} />
       </Routes>
 

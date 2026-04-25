@@ -5,6 +5,7 @@ import { Hero } from '../components/sections/Hero';
 import { PartnerSection } from '../components/sections/PartnerSection';
 import { ProcessSection } from '../components/sections/ProcessSection';
 import { Testimonials } from '../components/sections/Testimonials';
+import { TrustStrip } from '../components/sections/TrustStrip';
 import { Vorteile } from '../components/sections/Vorteile';
 import { WhyYutu } from '../components/sections/WhyYutu';
 
@@ -12,6 +13,7 @@ export function Home() {
   return (
     <>
       <Hero />
+      <TrustStrip />
       <ProcessSection />
       <WhyYutu />
       <Einsatzbereiche />

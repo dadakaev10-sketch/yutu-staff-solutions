@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Clock3, MapPin, PhoneCall, UploadCloud } from 'lucide-react';
+import { Clock3, Lock, MapPin, PhoneCall, UploadCloud } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
@@ -102,9 +102,10 @@ export function ApplicationSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <div ref={infoRef} className="lg:sticky lg:top-28">
-            <span className="inline-flex rounded-full bg-orange-50 dark:bg-white/10 px-4 py-1 text-sm font-semibold text-orange">
+            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+              <span className="h-px w-10 bg-orange" aria-hidden="true" />
               Jetzt bewerben
-            </span>
+            </div>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
               In 2 Minuten zum passenden Einsatz
             </h2>
@@ -115,7 +116,7 @@ export function ApplicationSection() {
             <div className="mt-8 space-y-4">
               {[
                 { icon: Clock3, title: 'Schnelle Rückmeldung', desc: 'Wir melden uns in der Regel innerhalb von 24 Stunden.', color: 'bg-gray-900 dark:bg-white/10' },
-                { icon: MapPin, title: 'Regional & passend', desc: 'Wir schauen auf Wohnort, Verfügbarkeit und Einsatzbereich.', color: 'bg-[#10B981]' },
+                { icon: MapPin, title: 'Regional & passend', desc: 'Wir schauen auf Wohnort, Verfügbarkeit und Einsatzbereich.', color: 'bg-gray-700 dark:bg-white/15' },
                 { icon: PhoneCall, title: 'Persönlicher Kontakt', desc: 'Keine anonyme Massenabwicklung - wir sprechen persönlich mit dir.', color: 'bg-orange' },
               ].map(({ icon: Icon, title, desc, color }, i) => (
                 <div
@@ -135,7 +136,7 @@ export function ApplicationSection() {
             </div>
           </div>
 
-          <div ref={formRef} className="rounded-[2rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-xl sm:p-8">
+          <div ref={formRef} className="rounded-[2rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm sm:p-8">
             <form
               onSubmit={handleSubmit}
               className="space-y-6"
@@ -230,6 +231,17 @@ export function ApplicationSection() {
                 >
                   {status === 'submitting' ? 'Wird gesendet …' : 'Bewerbung absenden'}
                 </Button>
+
+                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-500 dark:text-white/50">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
+                    Antwort innerhalb von 24 Stunden
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <Lock className="h-3.5 w-3.5" aria-hidden="true" />
+                    Verschlüsselte Übertragung
+                  </span>
+                </div>
             </form>
           </div>
         </div>

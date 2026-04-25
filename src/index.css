@@ -69,6 +69,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Account for the fixed navbar so anchor jumps don't slide under it. */
+  section[id],
+  main[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
   body {
     @apply bg-white text-gray-900 dark:bg-[#1a1a1a] dark:text-white antialiased transition-colors duration-300;
     font-family: 'Open Sans', sans-serif;

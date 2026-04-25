@@ -67,9 +67,11 @@ export function FAQSection() {
     <section ref={sectionRef} id="faq" className="bg-white dark:bg-[#111] py-20 sm:py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div ref={headingRef} className="text-center">
-          <span className="inline-flex rounded-full bg-emerald-50 dark:bg-white/10 px-4 py-1 text-sm font-semibold text-[#10B981]">
+          <div className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+            <span className="h-px w-10 bg-orange" aria-hidden="true" />
             FAQ
-          </span>
+            <span className="h-px w-10 bg-orange" aria-hidden="true" />
+          </div>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
             Häufige Fragen
           </h2>

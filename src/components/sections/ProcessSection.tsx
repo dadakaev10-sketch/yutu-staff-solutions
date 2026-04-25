@@ -64,9 +64,10 @@ export function ProcessSection() {
     <section ref={sectionRef} id="ablauf" className="bg-slate-50 py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div ref={headingRef} className="max-w-2xl">
-          <span className="inline-flex rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold text-brand-navy">
+          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+            <span className="h-px w-10 bg-orange" aria-hidden="true" />
             So läuft's ab
-          </span>
+          </div>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
             Vom Formular zum ersten Einsatz — in wenigen Tagen.
           </h2>

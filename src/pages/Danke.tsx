@@ -87,9 +87,10 @@ export function Danke() {
             <CheckCircle2 className="h-9 w-9" />
           </div>
 
-          <span className="mt-6 inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-emerald-300">
+          <div className="mt-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+            <span className="h-px w-10 bg-orange" aria-hidden="true" />
             {copy.badge}
-          </span>
+          </div>
           <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             {copy.heading}
           </h1>

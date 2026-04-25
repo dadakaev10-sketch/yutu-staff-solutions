@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, BriefcaseBusiness, Building2, Clock3, Users } from 'lucide-react';
+import { ArrowRight, BriefcaseBusiness, Building2, Clock3, Lock, Users } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
@@ -110,12 +110,13 @@ export function PartnerSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           ref={heroBoxRef}
-          className="grid gap-10 overflow-hidden rounded-[2rem] bg-[#1a1a1a] dark:bg-[#111] px-6 py-8 text-white shadow-2xl sm:px-8 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-14"
+          className="grid gap-10 overflow-hidden rounded-[2rem] bg-[#1a1a1a] dark:bg-[#111] px-6 py-8 text-white shadow-lg sm:px-8 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-14"
         >
           <div>
-            <span className="inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-[#10B981]">
-              Für Partnerbetriebe / Personalbedarf
-            </span>
+            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+              <span className="h-px w-10 bg-orange" aria-hidden="true" />
+              Für Partnerbetriebe
+            </div>
 
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Verlässliches Personal. Schnell, flexibel und menschlich.
@@ -147,7 +148,7 @@ export function PartnerSection() {
                 ref={(el) => { benefitsRef.current[i] = el; }}
                 className="rounded-[1.5rem] border border-white/10 bg-white/10 p-5 backdrop-blur-sm transition hover:bg-white/15"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#10B981]/20 text-[#10B981]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-orange">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 text-lg font-bold tracking-tight text-white">{title}</h3>
@@ -229,7 +230,7 @@ export function PartnerSection() {
                   </div>
                 )}
 
-                <div className="sm:col-span-2">
+                <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
                   <Button
                     type="submit"
                     disabled={status === 'submitting'}
@@ -237,6 +238,17 @@ export function PartnerSection() {
                   >
                     {status === 'submitting' ? 'Wird gesendet …' : 'Anfrage senden'}
                   </Button>
+
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-gray-500 dark:text-white/50">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
+                      Rückmeldung in 24 h
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Lock className="h-3.5 w-3.5" aria-hidden="true" />
+                      Verschlüsselt
+                    </span>
+                  </div>
                 </div>
             </form>
           </div>

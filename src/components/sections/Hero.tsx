@@ -75,8 +75,9 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[88svh] max-w-7xl items-center px-4 pb-12 pt-28 sm:px-6 lg:px-8">
         <div className="grid w-full gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="max-w-3xl">
-            <div ref={badgeRef} className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur">
-              Persönlich, regional, menschlich
+            <div ref={badgeRef} className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-white/85">
+              <span className="h-px w-10 bg-orange" aria-hidden="true" />
+              Wien · Linz · Graz und Umgebung
             </div>
 
             <h1
@@ -119,7 +120,7 @@ export function Hero() {
                   className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15"
                 >
                   <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#10B981]/20 text-[#10B981]">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-orange">
                       <Icon className="h-5 w-5" />
                     </span>
                     <span
@@ -137,7 +138,8 @@ export function Hero() {
 
           <div ref={cardRef} className="hidden lg:block">
             <div className="ml-auto max-w-md rounded-[2rem] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#10B981]">
+              <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+                <span className="h-px w-8 bg-orange" aria-hidden="true" />
                 Schnell zum Einsatz
               </p>
               <h2 className="mt-4 text-2xl font-bold text-white">

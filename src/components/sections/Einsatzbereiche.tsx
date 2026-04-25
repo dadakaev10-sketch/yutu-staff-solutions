@@ -64,9 +64,10 @@ export function Einsatzbereiche() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div ref={headingRef} className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div className="max-w-2xl">
-            <span className="inline-flex rounded-full bg-emerald-50 dark:bg-white/10 px-4 py-1 text-sm font-semibold text-[#10B981]">
+            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+              <span className="h-px w-10 bg-orange" aria-hidden="true" />
               Einsatzbereiche
-            </span>
+            </div>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
               Viele Branchen. Ein persönlicher Ansprechpartner.
             </h2>

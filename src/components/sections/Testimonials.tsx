@@ -18,7 +18,7 @@ const testimonials = [
     name: 'Daniel K.',
     role: 'Eventhelfer, Linz',
     initials: 'DK',
-    accent: 'bg-emerald-500/20 text-emerald-300',
+    accent: 'bg-white/15 text-white',
     quote:
       'Ohne langen Lebenslauf gleich losgelegt. Faire Bezahlung und die Koordination läuft super persönlich ab.',
   },
@@ -26,7 +26,7 @@ const testimonials = [
     name: 'Yasmin S.',
     role: 'Reinigungskraft, Graz',
     initials: 'YS',
-    accent: 'bg-sky-500/20 text-sky-300',
+    accent: 'bg-orange/15 text-orange',
     quote:
       'Ich kann meine Stunden rund um Familie und Kinder selbst wählen. Team ist top – fühle mich wirklich geschätzt.',
   },
@@ -70,9 +70,10 @@ export function Testimonials() {
     <section ref={sectionRef} id="stimmen" className="bg-slate-950 py-20 text-white sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div ref={headingRef} className="max-w-3xl">
-          <span className="inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-brand-green">
+          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+            <span className="h-px w-10 bg-orange" aria-hidden="true" />
             Stimmen aus dem Team
-          </span>
+          </div>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Echte Menschen. Echte Jobs. Echte Erfahrungen.
           </h2>
@@ -111,7 +112,7 @@ export function Testimonials() {
                 ))}
               </div>
 
-              <Quote className="mt-6 h-8 w-8 text-brand-green" aria-hidden="true" />
+              <Quote className="mt-6 h-8 w-8 text-orange/70" aria-hidden="true" />
 
               <p className="mt-4 flex-1 text-base leading-8 text-white/80">{testimonial.quote}</p>
             </article>

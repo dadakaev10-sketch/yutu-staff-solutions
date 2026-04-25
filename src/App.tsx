@@ -1,35 +1,44 @@
+import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Footer } from './components/layout/Footer';
 import { Navbar } from './components/layout/Navbar';
-import { ApplicationSection } from './components/sections/ApplicationSection';
-import { Einsatzbereiche } from './components/sections/Einsatzbereiche';
-import { FAQSection } from './components/sections/FAQSection';
-import { Hero } from './components/sections/Hero';
-import { PartnerSection } from './components/sections/PartnerSection';
-import { ProcessSection } from './components/sections/ProcessSection';
-import { Vorteile } from './components/sections/Vorteile';
-import { WhyYutu } from './components/sections/WhyYutu';
+import { Datenschutz } from './pages/Datenschutz';
+import { Home } from './pages/Home';
+import { Impressum } from './pages/Impressum';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function App() {
+function ScrollToHashOnRouteChange() {
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.hash) {
+      // Wait one frame so the destination has mounted before scrolling.
+      requestAnimationFrame(() => {
+        const el = document.querySelector(location.hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
+
+export default function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen overflow-x-hidden bg-white text-gray-900 transition-colors duration-300 dark:bg-[#1a1a1a] dark:text-white">
+      <ScrollToHashOnRouteChange />
       <Navbar />
 
-      <main>
-        <Hero />
-        <ProcessSection />
-        <WhyYutu />
-        <Einsatzbereiche />
-        <Vorteile />
-        <ApplicationSection />
-        <PartnerSection />
-        <FAQSection />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
 
       <Footer />
     </div>

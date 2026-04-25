@@ -1,11 +1,29 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, BriefcaseBusiness, Building2, Clock3, Lock, Users } from 'lucide-react';
+import { ArrowRight, BriefcaseBusiness, Building2, Check, Clock3, Lock, Users } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const pricingData = [
+  { branche: 'Reinigung', kv: 'BG A/B', range: '22 – 28' },
+  { branche: 'Lager & Logistik', kv: 'BG A/B', range: '22 – 30' },
+  { branche: 'Gastronomie', kv: 'BG B/C', range: '23 – 30' },
+  { branche: 'Handel', kv: 'BG B/C', range: '23 – 30' },
+  { branche: 'Event & Promotion', kv: 'BG B/C', range: '24 – 32' },
+  { branche: 'Produktion', kv: 'BG C/D', range: '26 – 36' },
+  { branche: 'Security', kv: 'BG C/D', range: '28 – 38' },
+  { branche: 'Technik / Facharbeit', kv: 'BG E/F', range: '32 – 48' },
+];
+
+const pricingIncluded = [
+  'SV-Dienstgeberanteile, KommSt, MV-Beitrag, Lohnsteuer',
+  'Urlaubs- & SEG-Anteil, Krankenstand-Risiko',
+  'Recruiting, Vorauswahl & Teamfit',
+  'Personalleihe-Versicherung & Ausfallabsicherung',
+];
 
 const partnerBenefits = [
   {
@@ -31,6 +49,7 @@ export function PartnerSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const heroBoxRef = useRef<HTMLDivElement>(null);
   const benefitsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const pricingBoxRef = useRef<HTMLDivElement>(null);
   const formBoxRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
@@ -56,6 +75,16 @@ export function PartnerSection() {
           trigger: benefits[0],
           start: 'top 90%',
           onEnter: () => gsap.to(benefits, { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out' }),
+          once: true,
+        });
+      }
+
+      if (pricingBoxRef.current) {
+        gsap.set(pricingBoxRef.current, { opacity: 0, y: 30 });
+        ScrollTrigger.create({
+          trigger: pricingBoxRef.current,
+          start: 'top 90%',
+          onEnter: () => gsap.to(pricingBoxRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }),
           once: true,
         });
       }
@@ -139,6 +168,14 @@ export function PartnerSection() {
                 <a href="tel:+436641485854">Direkt anrufen</a>
               </Button>
             </div>
+
+            <a
+              href="#preise"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white/70 transition hover:text-white"
+            >
+              Preise & Konditionen ansehen
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
 
           <div className="space-y-4">
@@ -155,6 +192,86 @@ export function PartnerSection() {
                 <p className="mt-2 text-sm leading-7 text-white/75 font-opensans">{description}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div
+          ref={pricingBoxRef}
+          id="preise"
+          className="mt-8 rounded-[2rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 sm:p-8 lg:p-10"
+        >
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div>
+              <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+                <span className="h-px w-10 bg-orange" aria-hidden="true" />
+                Preise & Konditionen
+              </div>
+
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                Transparente Verrechnungssätze.
+              </h3>
+
+              <p className="mt-4 text-base leading-7 text-gray-600 dark:text-white/70 font-opensans">
+                Richtwerte netto pro Stunde, basierend auf dem Kollektivvertrag Arbeitskräfteüberlassung 2026.
+                Verbindliche Angebote nach Profil-, Schicht- und Volumenklärung.
+              </p>
+
+              <div className="mt-8">
+                <h4 className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-white/50">
+                  Im Stundensatz inkludiert
+                </h4>
+                <ul className="mt-4 space-y-2.5 text-sm text-gray-700 dark:text-white/75 font-opensans">
+                  {pricingIncluded.map((item) => (
+                    <li key={item} className="flex gap-2.5">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-6 rounded-2xl bg-gray-50 dark:bg-white/5 px-4 py-3 text-sm leading-6 text-gray-600 dark:text-white/65 font-opensans">
+                <strong className="font-semibold text-gray-900 dark:text-white">Zuschläge</strong>{' '}
+                gemäß KV: Nacht +50 %, Sonntag +50–100 %, Feiertag +100 %, Mehrarbeit +50 %.
+                Mindestabnahme 4 Stunden pro Einsatz.
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {pricingData.map((row) => (
+                <div
+                  key={row.branche}
+                  className="flex flex-col rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-4 transition hover:border-orange/40 hover:bg-orange/5"
+                >
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-white/50">
+                    {row.kv}
+                  </span>
+                  <span className="mt-1 text-base font-bold text-gray-900 dark:text-white">
+                    {row.branche}
+                  </span>
+                  <span className="mt-2 text-lg font-bold text-orange">
+                    € {row.range}
+                    <span className="ml-1 text-xs font-medium text-gray-500 dark:text-white/50">
+                      / h netto
+                    </span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 border-t border-gray-200 dark:border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs leading-6 text-gray-500 dark:text-white/50 font-opensans">
+              Richtwerte. Endgültige Stundensätze hängen von Qualifikation, Einsatzdauer, Schichtmodell und Volumen ab.
+              Übernahme in Festanstellung nach Vereinbarung.
+            </p>
+            <a
+              href="#kontakt-betriebe"
+              className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-orange hover:text-orange-light"
+            >
+              Individuelles Angebot anfragen
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
 

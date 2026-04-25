@@ -17,14 +17,14 @@ import { Button } from '../ui/Button';
 gsap.registerPlugin(ScrollTrigger);
 
 const branches = [
-  { title: 'Gastronomie', description: 'Service, Bar, Küchenhilfe', image: '/branchen/Gastronomie.jpg', icon: UtensilsCrossed },
-  { title: 'Reinigung', description: 'Büro, Objekt, Hotellerie', image: '/branchen/Reinigung.jpg', icon: Sparkles },
-  { title: 'Event', description: 'Messen, Konzerte, Gala', image: '/branchen/Event.jpg', icon: PartyPopper },
-  { title: 'Security', description: 'Veranstaltung & Objekt', image: '/branchen/Security.jpg', icon: ShieldCheck },
-  { title: 'Hotellerie', description: 'Rezeption & Housekeeping', image: '/branchen/Rezeption.jpg', icon: Hotel },
-  { title: 'Logistik', description: 'Lager, Kommissionierung', image: '/branchen/Logistik.jpg', icon: Truck },
-  { title: 'Produktion', description: 'Helfer & Fachkräfte', image: '/branchen/Produktion.jpg', icon: Factory },
-  { title: 'Handel', description: 'Promotion & Verkauf', image: '/branchen/HandelPromotion.jpg', icon: ShoppingBag },
+  { title: 'Gastronomie', description: 'Service, Bar, Küchenhilfe', image: '/branchen/Gastronomie.jpg', alt: 'Servicekraft schenkt Wein in einem Restaurant ein', icon: UtensilsCrossed },
+  { title: 'Reinigung', description: 'Büro, Objekt, Hotellerie', image: '/branchen/Reinigung.jpg', alt: 'Reinigungskraft mit Putzwagen in einem Büro', icon: Sparkles },
+  { title: 'Event', description: 'Messen, Konzerte, Gala', image: '/branchen/Event.jpg', alt: 'Event-Crew bei einem Konzert hinter den Kulissen', icon: PartyPopper },
+  { title: 'Security', description: 'Veranstaltung & Objekt', image: '/branchen/Security.jpg', alt: 'Security-Mitarbeiter im Anzug beim Einlass einer Veranstaltung', icon: ShieldCheck },
+  { title: 'Hotellerie', description: 'Rezeption & Housekeeping', image: '/branchen/Rezeption.jpg', alt: 'Rezeptionist begrüßt Gäste an der Hotel-Rezeption', icon: Hotel },
+  { title: 'Logistik', description: 'Lager, Kommissionierung', image: '/branchen/Logistik.jpg', alt: 'Lagerarbeiter beim Kommissionieren von Paketen im Hochregallager', icon: Truck },
+  { title: 'Produktion', description: 'Helfer & Fachkräfte', image: '/branchen/Produktion.jpg', alt: 'Produktionsmitarbeiter an einer Fertigungsstraße in einer Halle', icon: Factory },
+  { title: 'Handel', description: 'Promotion & Verkauf', image: '/branchen/HandelPromotion.jpg', alt: 'Promoter berät Kunden im Einzelhandel', icon: ShoppingBag },
 ];
 
 export function Einsatzbereiche() {
@@ -79,7 +79,7 @@ export function Einsatzbereiche() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {branches.map(({ title, description, image, icon: Icon }, i) => (
+          {branches.map(({ title, description, image, alt, icon: Icon }, i) => (
             <article
               key={title}
               ref={(el) => { cardsRef.current[i] = el; }}
@@ -88,9 +88,10 @@ export function Einsatzbereiche() {
               <div className="relative h-52 overflow-hidden">
                 <img
                   src={image}
-                  alt={title}
+                  alt={alt}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(2,6,23,0.58))]" />
                 <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 text-gray-900 shadow-md backdrop-blur">

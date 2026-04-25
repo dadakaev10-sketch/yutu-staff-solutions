@@ -11,24 +11,28 @@ const benefitRows = [
     title: 'Flexible Arbeitszeiten',
     description: 'Schichten rund um Studium, Familie oder Hauptjob. Du entscheidest mit, wann und wie oft du arbeiten willst.',
     image: '/branchen/benefit-flexibel.png',
+    alt: 'Studentin plant flexible Arbeitsschichten am Laptop',
     icon: Clock3,
   },
   {
     title: 'Persönlich & regional',
     description: 'Wir kennen unsere Partnerbetriebe und schauen genau, welcher Einsatz zu dir, deinem Wohnort und deiner Verfügbarkeit passt.',
     image: '/branchen/benefit-persönlich.jpg',
+    alt: 'Persönliches Beratungsgespräch zwischen Mitarbeiter und Bewerber',
     icon: MapPinned,
   },
   {
     title: 'Faire Bezahlung',
     description: 'Transparente Stundensätze, klare Kommunikation und pünktliche Auszahlung. So soll Personaldienstleistung sein.',
     image: '/branchen/benefit-fair.jpg',
+    alt: 'Mitarbeiter prüft transparente Lohnabrechnung am Schreibtisch',
     icon: BadgeEuro,
   },
   {
     title: 'Schnell vom Kontakt zum Einsatz',
     description: 'Kein unnötiger Papierkram, kein komplizierter Prozess. Wir melden uns schnell und bringen dich zügig in passende Einsätze.',
     image: '/branchen/benefit-schnell.png',
+    alt: 'Mitarbeiter beim Telefonat – schnelle Rückmeldung nach der Bewerbung',
     icon: HeartHandshake,
   },
 ];
@@ -83,7 +87,7 @@ export function Vorteile() {
         </div>
 
         <div className="mt-14 space-y-12">
-          {benefitRows.map(({ title, description, image, icon: Icon }, index) => (
+          {benefitRows.map(({ title, description, image, alt, icon: Icon }, index) => (
             <div
               key={title}
               ref={(el) => { rowsRef.current[index] = el; }}
@@ -92,7 +96,7 @@ export function Vorteile() {
               }`}
             >
               <div className="relative h-72 overflow-hidden rounded-[1.5rem] sm:h-80">
-                <img src={image} alt={title} className="h-full w-full object-cover" loading="lazy" />
+                <img src={image} alt={alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(255,107,0,0.15))]" />
               </div>
 

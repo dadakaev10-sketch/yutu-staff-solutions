@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Footer } from './components/layout/Footer';
+import { MobileStickyCTA } from './components/layout/MobileStickyCTA';
 import { Navbar } from './components/layout/Navbar';
 import { Datenschutz } from './pages/Datenschutz';
 import { Home } from './pages/Home';
@@ -41,6 +42,7 @@ export default function App() {
       </Routes>
 
       <Footer />
+      <MobileStickyCTA />
     </div>
   );
 }

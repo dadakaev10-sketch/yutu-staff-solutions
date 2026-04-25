@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { Clock3, MapPin, PhoneCall, UploadCloud } from 'lucide-react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
+import { CheckCircle2, Clock3, MapPin, PhoneCall, UploadCloud } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../ui/Button';
@@ -16,11 +17,16 @@ const availabilityOptions = [
   'Teilzeit', 'Vollzeit', 'Nach Absprache',
 ];
 
+type Status = 'idle' | 'submitting' | 'success' | 'error';
+
 export function ApplicationSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const infoBadgesRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const [status, setStatus] = useState<Status>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -58,6 +64,36 @@ export function ApplicationSection() {
 
     return () => ctx.revert();
   }, []);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (status === 'submitting') return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await response.json().catch(() => ({}));
+
+      if (response.ok && (json.success ?? true)) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+        setErrorMessage(json.message || 'Übertragung fehlgeschlagen. Bitte versuche es erneut.');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMessage('Netzwerkfehler. Bitte überprüfe deine Verbindung und versuche es erneut.');
+    }
+  };
 
   return (
     <section ref={sectionRef} id="bewerbung" className="bg-white dark:bg-[#1a1a1a] py-20 sm:py-24">
@@ -98,84 +134,124 @@ export function ApplicationSection() {
           </div>
 
           <div ref={formRef} className="rounded-[2rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-xl sm:p-8">
-            <form
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              encType="multipart/form-data"
-              className="space-y-6"
-            >
-              <input type="hidden" name="access_key" value="d8839665-14bd-48f6-ab28-effc6add4b2d" />
-              <input type="hidden" name="subject" value="Neue Bewerbung - YuTu Staff Solutions" />
-              <input type="hidden" name="redirect" value="https://web3forms.com/success" />
-              <input type="checkbox" name="botcheck" className="hidden" />
+            {status === 'success' ? (
+              <div role="status" aria-live="polite" className="flex flex-col items-center py-10 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                  <CheckCircle2 className="h-9 w-9" />
+                </div>
+                <h3 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Bewerbung erhalten!
+                </h3>
+                <p className="mt-3 max-w-md text-base leading-7 text-gray-600 dark:text-white/70">
+                  Danke für dein Interesse. Wir melden uns innerhalb von 24 Stunden persönlich
+                  per Telefon oder E-Mail bei dir zurück.
+                </p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="mt-8 rounded-full"
+                  onClick={() => setStatus('idle')}
+                >
+                  Weitere Bewerbung senden
+                </Button>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                noValidate={false}
+              >
+                <input type="hidden" name="access_key" value="d8839665-14bd-48f6-ab28-effc6add4b2d" />
+                <input type="hidden" name="subject" value="Neue Bewerbung - YuTu Staff Solutions" />
+                <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
-              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="vorname" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Vorname</label>
+                    <input id="vorname" name="vorname" type="text" autoComplete="given-name" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="Vorname" />
+                  </div>
+                  <div>
+                    <label htmlFor="nachname" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Nachname</label>
+                    <input id="nachname" name="nachname" type="text" autoComplete="family-name" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="Nachname" />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="telefon" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Telefonnummer</label>
+                    <input id="telefon" name="telefon" type="tel" autoComplete="tel" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="+43 ..." />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">E-Mail</label>
+                    <input id="email" name="email" type="email" autoComplete="email" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="name@email.at" />
+                  </div>
+                </div>
+
                 <div>
-                  <label htmlFor="vorname" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Vorname</label>
-                  <input id="vorname" name="vorname" type="text" autoComplete="given-name" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="Vorname" />
+                  <label htmlFor="stadt" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">PLZ / Stadt</label>
+                  <input id="stadt" name="stadt" type="text" autoComplete="address-level2" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="z. B. 4020 Linz" />
                 </div>
+
                 <div>
-                  <label htmlFor="nachname" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Nachname</label>
-                  <input id="nachname" name="nachname" type="text" autoComplete="family-name" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="Nachname" />
+                  <p className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Gewünschte Branche</p>
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                    {branchOptions.map((option) => (
+                      <label key={option} className="flex cursor-pointer items-center gap-2 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-white/80 transition hover:border-orange hover:bg-orange/5 has-[:checked]:border-orange has-[:checked]:bg-orange/10 has-[:checked]:text-orange">
+                        <input type="checkbox" name="branche" value={option} className="accent-orange" />
+                        {option}
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="telefon" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Telefonnummer</label>
-                  <input id="telefon" name="telefon" type="tel" autoComplete="tel" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="+43 ..." />
+                  <label htmlFor="verfügbarkeit" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Verfügbarkeit</label>
+                  <select id="verfügbarkeit" name="verfügbarkeit" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition focus:border-orange focus:ring-4 focus:ring-orange/20" defaultValue="">
+                    <option value="" disabled>Bitte wählen</option>
+                    {availabilityOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
                 </div>
+
                 <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">E-Mail</label>
-                  <input id="email" name="email" type="email" autoComplete="email" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="name@email.at" />
+                  <label htmlFor="datei" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Datei-Upload (optional)</label>
+                  <label htmlFor="datei" className="flex cursor-pointer flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-gray-300 dark:border-white/20 bg-gray-50 dark:bg-white/5 px-6 py-8 text-center transition hover:border-orange hover:bg-orange/5">
+                    <UploadCloud className="h-7 w-7 text-orange" />
+                    <span className="mt-3 text-sm font-semibold text-gray-800 dark:text-white">Lebenslauf, Zeugnisse oder Unterlagen hochladen</span>
+                    <span className="mt-1 text-sm text-gray-500 dark:text-white/50">PDF, JPG oder PNG</span>
+                  </label>
+                  <input id="datei" name="datei" type="file" className="sr-only" accept=".pdf,.jpg,.jpeg,.png" />
                 </div>
-              </div>
 
-              <div>
-                <label htmlFor="stadt" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">PLZ / Stadt</label>
-                <input id="stadt" name="stadt" type="text" autoComplete="address-level2" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-orange focus:ring-4 focus:ring-orange/20" placeholder="z. B. 4020 Linz" />
-              </div>
-
-              <div>
-                <p className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Gewünschte Branche</p>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                  {branchOptions.map((option) => (
-                    <label key={option} className="flex cursor-pointer items-center gap-2 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-white/80 transition hover:border-orange hover:bg-orange/5 has-[:checked]:border-orange has-[:checked]:bg-orange/10 has-[:checked]:text-orange">
-                      <input type="checkbox" name="branche" value={option} className="accent-orange" />
-                      {option}
-                    </label>
-                  ))}
+                <div className="rounded-2xl bg-gray-50 dark:bg-white/5 px-4 py-3 text-sm leading-6 text-gray-600 dark:text-white/60 font-opensans">
+                  Mit dem Absenden stimmst du der Verarbeitung deiner Daten zur Bearbeitung deiner Bewerbung zu.
+                  Details findest du in unserer{' '}
+                  <Link to="/datenschutz" className="font-semibold text-brand-navy underline-offset-4 hover:underline">
+                    Datenschutzerklärung
+                  </Link>
+                  .
                 </div>
-              </div>
 
-              <div>
-                <label htmlFor="verfügbarkeit" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Verfügbarkeit</label>
-                <select id="verfügbarkeit" name="verfügbarkeit" required className="h-12 w-full rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-white/10 px-4 text-gray-900 dark:text-white outline-none transition focus:border-orange focus:ring-4 focus:ring-orange/20" defaultValue="">
-                  <option value="" disabled>Bitte wählen</option>
-                  {availabilityOptions.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
+                {status === 'error' && (
+                  <div
+                    role="alert"
+                    aria-live="assertive"
+                    className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                  >
+                    {errorMessage}
+                  </div>
+                )}
 
-              <div>
-                <label htmlFor="datei" className="mb-2 block text-sm font-semibold text-gray-700 dark:text-white/80">Datei-Upload (optional)</label>
-                <label htmlFor="datei" className="flex cursor-pointer flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-gray-300 dark:border-white/20 bg-gray-50 dark:bg-white/5 px-6 py-8 text-center transition hover:border-orange hover:bg-orange/5">
-                  <UploadCloud className="h-7 w-7 text-orange" />
-                  <span className="mt-3 text-sm font-semibold text-gray-800 dark:text-white">Lebenslauf, Zeugnisse oder Unterlagen hochladen</span>
-                  <span className="mt-1 text-sm text-gray-500 dark:text-white/50">PDF, JPG oder PNG</span>
-                </label>
-                <input id="datei" name="datei" type="file" className="sr-only" accept=".pdf,.jpg,.jpeg,.png" />
-              </div>
-
-              <div className="rounded-2xl bg-gray-50 dark:bg-white/5 px-4 py-3 text-sm leading-6 text-gray-600 dark:text-white/60 font-opensans">
-                Mit dem Absenden stimmst du der Verarbeitung deiner Daten zur Bearbeitung deiner Bewerbung zu.
-              </div>
-
-              <Button type="submit" className="h-14 w-full rounded-full text-base font-semibold">
-                Bewerbung absenden
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="h-14 w-full rounded-full text-base font-semibold disabled:opacity-60"
+                >
+                  {status === 'submitting' ? 'Wird gesendet …' : 'Bewerbung absenden'}
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </div>

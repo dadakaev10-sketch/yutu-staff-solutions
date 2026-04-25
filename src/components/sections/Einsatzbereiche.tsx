@@ -86,13 +86,16 @@ export function Einsatzbereiche() {
               className="group overflow-hidden rounded-[1.75rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="relative h-52 overflow-hidden">
-                <img
-                  src={image}
-                  alt={alt}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture className="block h-full w-full">
+                  <source srcSet={image.replace(/\.(jpe?g|png)$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={image}
+                    alt={alt}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(2,6,23,0.58))]" />
                 <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 text-gray-900 shadow-md backdrop-blur">
                   <Icon className="h-5 w-5" />

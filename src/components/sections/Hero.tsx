@@ -57,7 +57,10 @@ export function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-heading">
       <div
         className="absolute inset-0 bg-cover bg-top"
-        style={{ backgroundImage: "url('/images/desktophero.png')" }}
+        style={{
+          backgroundImage:
+            "image-set(url('/images/desktophero.webp') type('image/webp'), url('/images/desktophero.png') type('image/png'))",
+        }}
         aria-hidden="true"
       />
       <div

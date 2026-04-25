@@ -96,7 +96,10 @@ export function Vorteile() {
               }`}
             >
               <div className="relative h-72 overflow-hidden rounded-[1.5rem] sm:h-80">
-                <img src={image} alt={alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                <picture className="block h-full w-full">
+                  <source srcSet={image.replace(/\.(jpe?g|png)$/i, '.webp')} type="image/webp" />
+                  <img src={image} alt={alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                </picture>
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(255,107,0,0.15))]" />
               </div>
 

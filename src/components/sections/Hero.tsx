@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Clock3, Scale, ShieldCheck, Users } from 'lucide-react';
 import { gsap } from 'gsap';
 import { Button } from '../ui/Button';
@@ -10,6 +10,8 @@ const trustItems = [
   { icon: Scale, num: 100, suffix: '%', label: 'Arbeitsrechtliche Sicherheit' },
 ];
 
+const branches = ['Gastronomie.', 'Reinigung.', 'Logistik.', 'Events.', 'Security.', 'Handel.'];
+
 export function Hero() {
   const badgeRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -18,6 +20,9 @@ export function Hero() {
   const trustRef = useRef<(HTMLDivElement | null)[]>([]);
   const counterEls = useRef<(HTMLSpanElement | null)[]>([]);
   const cardRef = useRef<HTMLDivElement>(null);
+  const branchRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [activeBranch, setActiveBranch] = useState(0);
+  const firstAnim = useRef(true);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -53,6 +58,39 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
+  // Cycle the rotating branch word — respects prefers-reduced-motion.
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+    const interval = setInterval(() => {
+      setActiveBranch((prev) => (prev + 1) % branches.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Spring-like swap animation for the active branch word.
+  useEffect(() => {
+    branches.forEach((_, i) => {
+      const el = branchRefs.current[i];
+      if (!el) return;
+      if (i === activeBranch) {
+        if (firstAnim.current) {
+          gsap.set(el, { y: 0, opacity: 1 });
+        } else {
+          gsap.fromTo(
+            el,
+            { y: -80, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'back.out(1.4)' }
+          );
+        }
+      } else {
+        gsap.to(el, { y: 80, opacity: 0, duration: 0.5, ease: 'power3.in' });
+      }
+    });
+    firstAnim.current = false;
+  }, [activeBranch]);
+
   return (
     <section id="top" className="relative isolate overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-heading">
       <div
@@ -83,11 +121,24 @@ export function Hero() {
             <h1
               ref={headingRef}
               id="hero-heading"
-              className="mt-6 max-w-4xl text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
+              className="mt-6 max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
             >
-              Dein Nebenjob.
-              <br />
-              Regional. Flexibel.
+              Dein Nebenjob:
+              <span className="relative mt-1 block h-[1.15em] overflow-hidden">
+                {branches.map((branch, i) => (
+                  <span
+                    key={branch}
+                    ref={(el) => { branchRefs.current[i] = el; }}
+                    className="absolute inset-y-0 left-0 flex items-center text-orange"
+                    style={{
+                      opacity: i === 0 ? 1 : 0,
+                      transform: i === 0 ? 'translateY(0)' : 'translateY(80px)',
+                    }}
+                  >
+                    {branch}
+                  </span>
+                ))}
+              </span>
             </h1>
 
             <p ref={subRef} className="mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">
